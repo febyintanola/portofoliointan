@@ -541,16 +541,24 @@
   content: "";
 }
 
-.financePreview {
+.MobilePreview {
   background: var(--panel-strong);
 }
 
-.creativePreview {
+.ReservationPreview {
   background: var(--periwinkle);
 }
 
-.healthPreview {
-  background: #b9ddff;
+.EntertainmentPreview {
+  background: var(--pink);
+}
+
+.NetworkPreview {
+  background: var(--blue);
+}
+
+.ServicePreview {
+  background: var(--yellow);
 }
 
 .projectPreview .appWindow {

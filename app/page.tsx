@@ -1,6 +1,6 @@
 import styles from "./page.module.css";
 
-type ProjectVisual = "finance" | "creative" | "health";
+type ProjectVisual = "mobile" | "reservation" | "entertainment" | "network" | "service";
 
 type Project = {
   number: string;
@@ -16,41 +16,66 @@ type Project = {
 
 const projects: Project[] = [
   {
-    number: "01/03",
-    title: "Saku",
-    category: "PRODUCT DESIGN · MOBILE APP",
+    number: "01/05",
+    title: "Quack",
+    category: "UI/UX DESIGN · MOBILE APP",
     description:
-      "Aplikasi pengelola keuangan yang membantu pengguna memahami kebiasaan belanja dan mencapai target tabungan dengan lebih tenang.",
-    roles: ["UX RESEARCH", "UI DESIGN", "PROTOTYPE"],
-    result: "[TAMBAHKAN HASIL UTAMA]",
-    year: "2026",
-    visual: "finance",
-    url: "",
+      "Aplikasi panduan evakuasi bencana yang menyediakan langkah keselamatan dan tombol SOS untuk membantu tim evakuasi untuk menemukan pengguna.",
+    roles: ["UI/UX DESIGN", "MOBILE DESIGN", "FIGMA PROTOTYPE"],
+    result: "PROTOTYPE INTERAKTIF PANDUAN EVAKUASI & SOS",
+    year: "2024",
+    visual: "mobile",
+    url: "https://www.figma.com/proto/nPQd29r4aoJyYXPWb5rqkY/Quack?node-id=695-1464&p=f&viewport=389%2C458%2C0.03&t=h6jOBAOnQXppDNhW-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=659%3A1269&show-proto-sidebar=1&page-id=0%3A1",
   },
   {
-    number: "02/03",
-    title: "RuangKarya",
-    category: "UI/UX · WEB DEVELOPMENT",
+    number: "02/05",
+    title: "RUMA",
+    category: "UI/UX DESIGN · WEB DEVELOPMENT",
     description:
-      "Platform responsif untuk kreator menampilkan karya, membangun profil profesional, dan menemukan peluang baru.",
-    roles: ["DESIGN SYSTEM", "NEXT.JS", "FRONT-END"],
-    result: "[TAMBAHKAN METRIK]",
+      "Platform untuk melakukan reservasi ruang rapat dan mobil dinas kantor.",
+    roles: ["DESIGN SYSTEM", "CODEIGNITER 4", "FULL-STACK DEVELOPMENT"],
+    result: "Web app untuk reservasi ruang rapat dan mobil dinas kantor",
     year: "2025",
-    visual: "creative",
-    url: "",
+    visual: "reservation",
+    url: "https://github.com/febyintanola/reservasi",
   },
   {
-    number: "03/03",
-    title: "KlinikSehat",
+    number: "03/05",
+    title: "BUZZ BUZZ",
     category: "UX REDESIGN · DASHBOARD",
     description:
-      "Redesain alur reservasi agar pasien lebih mudah memilih layanan, melihat jadwal dokter, dan mengelola janji temu.",
-    roles: ["UX AUDIT", "WIREFRAME", "USABILITY TEST"],
-    result: "[TAMBAHKAN METRIK]",
+      "Aplikasi review dan rating untuk film dan serial TV, dengan fitur rekomendasi berdasarkan preferensi pengguna.",
+    roles: ["UI/UX DESIGN", "FRONT-END", "RESEARCH"],
+    result: "Aplikasi Mobile review dan rating untuk film dan serial TV",
     year: "2025",
-    visual: "health",
+    visual: "entertainment",
     url: "",
   },
+  {
+    number: "04/05",
+    title: "Deteksi Jaringan Bot",
+    category: "UI/UX DESIGN · WEB DEVELOPMENT",
+    description:
+      "Web app untuk mendeteksi akun bot di media sosial menggunakan algoritma machine learning, dengan visualisasi data interaktif.",
+    roles: ["UI/UX DESIGN", "Full-Stack Development", "DATA VISUALIZATION", "FastAPI"],
+    result: "Web app untuk mendeteksi akun bot di media sosial (tiktok)",
+    year: "2026",
+    visual: "network",
+    url: "",
+  },
+  {
+    number: "05/05",
+    title: "Aplikasi SOA apa ya..",
+    category: "UI/UX DESIGN · MOBILE APP",
+    description:
+      "Deskripsi proyek lainnya.",
+    roles: ["UI/UX DESIGN", "MOBILE DESIGN"],
+    result: "[TAMBAHKAN METRIK]",
+    year: "2025",
+    visual: "service",
+    url: "",
+  },
+  
 ];
 
 const capabilities = [
@@ -96,7 +121,7 @@ const experiences = [
 const profileLinks = {
   email: "intanfebyola@gmail.com",
   resumeUrl: "",
-  linkedInUrl: "www.linkedin.com/in/intan-febyola-sidabutar",
+  linkedInUrl: "https://www.linkedin.com/in/intan-febyola-sidabutar",
   gitHubUrl: "https://github.com/febyintanola",
   instagramUrl: "https://www.instagram.com/intanfebyola/",
 };
@@ -167,9 +192,9 @@ function WindowBar({ title }: { title: string }) {
   );
 }
 
-function FinancePreview() {
+function MobilePreview() {
   return (
-    <div className={`${styles.projectPreview} ${styles.financePreview}`} aria-hidden="true">
+    <div className={`${styles.projectPreview} ${styles.MobilePreview}`} aria-hidden="true">
       <span className={styles.pixelSpark}>✦</span>
       <div className={styles.appWindow}>
         <WindowBar title="SAKU_APP.EXE" />
@@ -202,9 +227,9 @@ function FinancePreview() {
   );
 }
 
-function CreativePreview() {
+function ReservationPreview() {
   return (
-    <div className={`${styles.projectPreview} ${styles.creativePreview}`} aria-hidden="true">
+    <div className={`${styles.projectPreview} ${styles.ReservationPreview}`} aria-hidden="true">
       <div className={styles.appWindow}>
         <WindowBar title="RUANGKARYA.WEB" />
         <div className={styles.creativeProfile}>
@@ -221,9 +246,9 @@ function CreativePreview() {
   );
 }
 
-function HealthPreview() {
+function EntertainmentPreview() {
   return (
-    <div className={`${styles.projectPreview} ${styles.healthPreview}`} aria-hidden="true">
+    <div className={`${styles.projectPreview} ${styles.EntertainmentPreview}`} aria-hidden="true">
       <div className={styles.healthIcon}>+</div>
       <div className={styles.appWindow}>
         <WindowBar title="KLINIK_SEHAT.SYS" />
@@ -242,10 +267,43 @@ function HealthPreview() {
   );
 }
 
+function NetworkPreview() {
+  return (
+    <div className={`${styles.projectPreview} ${styles.NetworkPreview}`} aria-hidden="true">
+      <div className={styles.appWindow}>
+        <WindowBar title="NETWORK_DETECTOR.SYS" />
+        <div className={styles.healthUi}>
+          <div className={styles.healthSidebar}>BOT<i /><i /><i /></div>
+          <div className={styles.healthMain}>
+            <span>ANOMALY CHECK</span>
+            <strong>LIVE TRAFFIC MONITOR</strong>
+            <div><b>NODE A</b><i /><small>RISK: LOW</small></div>
+            <div><b>NODE B</b><i /><small>RISK: MEDIUM</small></div>
+            <div><b>NODE C</b><i /><small>RISK: HIGH</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ServicePreview() {
+  return (
+    <div className={`${styles.projectPreview} ${styles.ServicePreview}`} aria-hidden="true">
+      <div className={styles.appWindow}>
+        <WindowBar title="SERVICE_APP.PNG" />
+        <PixelPortrait />
+      </div>
+    </div>
+  );
+}
+
 function ProjectPreview({ type }: { type: ProjectVisual }) {
-  if (type === "finance") return <FinancePreview />;
-  if (type === "creative") return <CreativePreview />;
-  return <HealthPreview />;
+  if (type === "mobile") {return <MobilePreview />;}
+  if (type === "reservation") {return <ReservationPreview />;}
+  if (type === "entertainment") {return <EntertainmentPreview />;}
+  if (type === "network") {return <NetworkPreview />;}
+  return <ServicePreview />;
 }
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -338,9 +396,9 @@ export default function Home() {
             </div>
             <div className={styles.portraitWindow}>
               <WindowBar title="HELLO_WORLD.PNG" />
-              <PixelPortrait />
+              <img src="/intanfoto.jpeg" alt="Foto Intan" />
               <div className={styles.portraitCaption}>
-                <span>NAME: INTAN</span>
+                <span>NAME: INTAN FEBYOLA PUTRI DWINA SIDABUTAR</span>
                 <span>STATUS: READY_TO_CREATE</span>
               </div>
             </div>
@@ -360,7 +418,6 @@ export default function Home() {
             <span>[ 01_SELECTED_WORK ]</span>
             <div>
               <h2 id="work-title">PROJECTS I&apos;M PROUD OF_</h2>
-              <p>Contoh proyek placeholder—ganti isi dan visualnya dengan karya terbaikmu nanti.</p>
             </div>
           </div>
           <div className={styles.projectList}>
@@ -378,9 +435,9 @@ export default function Home() {
                 <span>•</span><span>•</span><i /><b>⌣</b>
               </div>
               <div className={styles.idData}>
-                <span>NAME</span><strong>[INTAN]</strong>
+                <span>NAME</span><strong>[INTAN FEBYOLA PUTRI DWINA SIDABUTAR]</strong>
                 <span>ROLE</span><strong>DESIGNER + DEVELOPER</strong>
-                <span>LOCATION</span><strong>[KOTA, ID]</strong>
+                <span>LOCATION</span><strong>[JAKARTA, ID]</strong>
               </div>
             </div>
             <span className={styles.aboutStamp}>CURIOUS<br />BY DEFAULT</span>
@@ -390,7 +447,7 @@ export default function Home() {
             <span className={styles.sectionCode}>[ 02_ABOUT_ME ]</span>
             <h2 id="about-title">DESIGN YANG THOUGHTFUL. CODE YANG RAPI_</h2>
             <p>
-              Saya Intan, UI/UX designer dan front-end developer berbasis di <strong>[Kota]</strong>. Saya menikmati proses memahami masalah, menyusun alur yang logis, lalu mengubahnya menjadi antarmuka yang konsisten dan responsif.
+              Saya Intan, UI/UX designer dan front-end developer berbasis di <strong>Jakarta</strong>. Saya menikmati proses memahami masalah, menyusun alur yang logis, lalu mengubahnya menjadi antarmuka yang konsisten dan responsif.
             </p>
             <p>
               Saat tidak mendesain atau menulis kode, saya biasanya <strong>[tambahkan aktivitas atau fakta personal]</strong>.
