@@ -208,7 +208,7 @@ function ReservationPreview() {
     <div className={`${styles.projectPreview} ${styles.ReservationPreview}`} aria-hidden="true">
       <div className={styles.appWindow}>
         <WindowBar title="RuMa.WEB" />
-        <img src="/RUMA.png" alt="Tampilan web RuMa" />
+        <img src="/ruma.png" alt="Tampilan web RuMa" />
       </div>
       <div className={styles.pixelCursor}>◢</div>
       <div className={styles.miniTag}>Internship Project</div>
