@@ -327,7 +327,7 @@ export default function Home() {
               MERANCANG PRODUK DIGITAL DARI <mark>ALUR</mark> HINGGA IMPLEMENTASI<span className={styles.blink}>_</span>
             </h1>
             <p>
-              Saya <strong>Intan</strong>, Fresh Graduate dari Universitas Pembangunan Nasional Veteran Jakarta, dari jurusan Informatika dengan peminatan software engineering, berbasis di <strong>Jakarta</strong>. Saya merancang produk digital mulai dari menyusun alur pengguna dan prototype hingga mengimplementasikan antarmuka yang responsif.
+              Saya <strong>Intan</strong>, Fresh Graduate dari Universitas Pembangunan Nasional Veteran Jakarta(UPNVJ), dari jurusan Informatika dengan peminatan software engineering, berbasis di <strong>Jakarta</strong>. Saya merancang produk digital mulai dari menyusun alur pengguna dan prototype hingga mengimplementasikan antarmuka yang responsif.
             </p>
             <div className={styles.heroActions}>
               <a className={styles.pixelButton} href="#work">EXPLORE WORK <PixelArrow /></a>
