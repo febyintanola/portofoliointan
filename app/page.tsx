@@ -49,7 +49,7 @@ const projects: Project[] = [
     result: "Aplikasi Mobile review dan rating untuk film dan serial TV",
     year: "2025",
     visual: "entertainment",
-    url: "",
+    url: "https://github.com/febyintanola/Buzz-Buzz.git",
   },
   {
     number: "04/05",
@@ -61,7 +61,7 @@ const projects: Project[] = [
     result: "Web app untuk mendeteksi akun bot di media sosial (tiktok)",
     year: "2026",
     visual: "network",
-    url: "",
+    url: "https://github.com/febyintanola/DeteksiJaringanBot  ",
   },
   {
     number: "05/05",
@@ -98,26 +98,25 @@ const capabilities = [
 
 const experiences = [
   {
-    period: "[2024 — SEKARANG]",
-    role: "UI/UX DESIGNER & FRONT-END DEVELOPER",
-    company: "[NAMA PERUSAHAAN / FREELANCE]",
-    description: "Merancang pengalaman pengguna dan antarmuka web untuk [jenis produk atau industri].",
+    period: "[July 2025 — November 2025]",
+    role: "SIS Intern",
+    company: "PT PLN Indonesia Power Unit Bisnis Pemeliharaan",
+    description: "Merancang pengalaman pengguna dan antarmuka web untuk aplikasi reservasi ruang rapat dan mobil dinas kantor.",
   },
   {
-    period: "[2022 — 2024]",
-    role: "PRODUCT DESIGNER",
-    company: "[NAMA PERUSAHAAN]",
-    description: "Menerjemahkan kebutuhan bisnis menjadi solusi digital bersama tim produk dan developer.",
+    period: "[2022 — 2026]",
+    role: "Anggota",
+    company: "Gita Advayatva",
+    description: "UKM paduan suara di Universitas Pembangunan Nasional Veteran Jakarta, berpartisipasi dalam latihan rutin dan pertunjukan.",
   },
   {
-    period: "[2021 — 2022]",
-    role: "DESIGN INTERN",
-    company: "[NAMA PERUSAHAAN]",
-    description: "Mendukung riset, desain visual, dan pengujian prototype untuk [jenis proyek].",
+    period: "[2022 — 2026]",
+    role: "Mahasiswa",
+    company: "Universitas Pembangunan Nasional Veteran Jakarta",
+    description: "Belajar desain interaksi, pengembangan web, dan pemrograman front-end sebagai bagian dari jurusan Teknik Informatika.",
   },
 ];
 
-// Isi nilai berikut untuk mengaktifkan tautan kontak dan CV.
 const profileLinks = {
   email: "intanfebyola@gmail.com",
   resumeUrl: "",
@@ -197,31 +196,8 @@ function MobilePreview() {
     <div className={`${styles.projectPreview} ${styles.MobilePreview}`} aria-hidden="true">
       <span className={styles.pixelSpark}>✦</span>
       <div className={styles.appWindow}>
-        <WindowBar title="SAKU_APP.EXE" />
-        <div className={styles.financeUi}>
-          <div className={styles.financeTop}>
-            <span>TOTAL SALDO</span>
-            <strong>Rp12.450.000</strong>
-          </div>
-          <div className={styles.chart}>
-            <i />
-            <i />
-            <i />
-            <i />
-            <i />
-            <i />
-            <i />
-          </div>
-          <div className={styles.financeRows}>
-            <div><span>▣</span><i /><b>−120K</b></div>
-            <div><span>◆</span><i /><b>−85K</b></div>
-          </div>
-        </div>
-      </div>
-      <div className={styles.resultPopup}>
-        <span>SAVING GOAL</span>
-        <strong>78%</strong>
-        <i />
+        <WindowBar title="Quack.app" />
+        <img src="/Quack.png" alt="Tampilan aplikasi Quack" />
       </div>
     </div>
   );
@@ -231,17 +207,11 @@ function ReservationPreview() {
   return (
     <div className={`${styles.projectPreview} ${styles.ReservationPreview}`} aria-hidden="true">
       <div className={styles.appWindow}>
-        <WindowBar title="RUANGKARYA.WEB" />
-        <div className={styles.creativeProfile}>
-          <span>RK</span>
-          <div><strong>RUANGKARYA_</strong><small>CREATIVE PORTFOLIO</small></div>
-        </div>
-        <div className={styles.creativeGrid}>
-          <span>01</span><span>02</span><span>03</span>
-        </div>
+        <WindowBar title="RuMa.WEB" />
+        <img src="/RUMA.png" alt="Tampilan web RuMa" />
       </div>
       <div className={styles.pixelCursor}>◢</div>
-      <div className={styles.miniTag}>EXPLORE_WORK</div>
+      <div className={styles.miniTag}>Internship Project</div>
     </div>
   );
 }
@@ -251,37 +221,19 @@ function EntertainmentPreview() {
     <div className={`${styles.projectPreview} ${styles.EntertainmentPreview}`} aria-hidden="true">
       <div className={styles.healthIcon}>+</div>
       <div className={styles.appWindow}>
-        <WindowBar title="KLINIK_SEHAT.SYS" />
-        <div className={styles.healthUi}>
-          <div className={styles.healthSidebar}>K+<i /><i /><i /></div>
-          <div className={styles.healthMain}>
-            <span>JADWAL HARI INI</span>
-            <strong>SELASA, 06 AGUSTUS</strong>
-            <div><b>09:30</b><i /><small>CONFIRMED</small></div>
-            <div><b>11:00</b><i /><small>PENDING</small></div>
-            <div><b>13:15</b><i /><small>CONFIRMED</small></div>
+        <WindowBar title="BuzzBuzz.App" />
+        <img src="/BuzzBuzz.png" alt="Tampilan aplikasi Buzz Buzz" />
           </div>
         </div>
-      </div>
-    </div>
-  );
+  );  
 }
 
 function NetworkPreview() {
   return (
     <div className={`${styles.projectPreview} ${styles.NetworkPreview}`} aria-hidden="true">
       <div className={styles.appWindow}>
-        <WindowBar title="NETWORK_DETECTOR.SYS" />
-        <div className={styles.healthUi}>
-          <div className={styles.healthSidebar}>BOT<i /><i /><i /></div>
-          <div className={styles.healthMain}>
-            <span>ANOMALY CHECK</span>
-            <strong>LIVE TRAFFIC MONITOR</strong>
-            <div><b>NODE A</b><i /><small>RISK: LOW</small></div>
-            <div><b>NODE B</b><i /><small>RISK: MEDIUM</small></div>
-            <div><b>NODE C</b><i /><small>RISK: HIGH</small></div>
-          </div>
-        </div>
+        <WindowBar title="NETWORK_DETECTOR.Web" />
+        <img src="/botnet.png" alt="Tampilan web Network Detector" />
       </div>
     </div>
   );
@@ -373,10 +325,10 @@ export default function Home() {
               <span>UI/UX + FRONT-END</span>
             </div>
             <h1 id="hero-title">
-              MEMBUAT PRODUK DIGITAL YANG <mark>JELAS</mark>, FUN, &amp; MUDAH DIPAKAI<span className={styles.blink}>_</span>
+              MERANCANG PRODUK DIGITAL DARI <mark>ALUR</mark> HINGGA IMPLEMENTASI<span className={styles.blink}>_</span>
             </h1>
             <p>
-              Halo, saya <strong>Intan</strong>. Saya mengubah masalah yang rumit menjadi pengalaman digital yang sederhana, menarik, dan terasa manusiawi.
+              Saya <strong>Intan</strong>, UI/UX Designer dan Front-End Developer. Saya mengerjakan user flow, prototype, dan design system, lalu menerjemahkannya menjadi antarmuka web yang responsif.
             </p>
             <div className={styles.heroActions}>
               <a className={styles.pixelButton} href="#work">EXPLORE WORK <PixelArrow /></a>
@@ -445,16 +397,13 @@ export default function Home() {
 
           <div className={styles.aboutCopy}>
             <span className={styles.sectionCode}>[ 02_ABOUT_ME ]</span>
-            <h2 id="about-title">DESIGN YANG THOUGHTFUL. CODE YANG RAPI_</h2>
-            <p>
-              Saya Intan, UI/UX designer dan front-end developer berbasis di <strong>Jakarta</strong>. Saya menikmati proses memahami masalah, menyusun alur yang logis, lalu mengubahnya menjadi antarmuka yang konsisten dan responsif.
-            </p>
-            <p>
-              Saat tidak mendesain atau menulis kode, saya biasanya <strong>[tambahkan aktivitas atau fakta personal]</strong>.
+            <h2 id="about-title">DESIGNING CLEAR FLOWS, BUILDING FUNCTIONAL PRODUCTS_</h2>
+            <p>Saya Intan, UI/UX designer dan front-end developer berbasis di <strong>Jakarta</strong>. Saya Intan, UI/UX Designer dan Front-End Developer. Saya merancang produk digital mulai dari menyusun alur pengguna dan prototype hingga mengimplementasikan antarmuka yang responsif.
+Project saya mencakup aplikasi panduan evakuasi, sistem reservasi fasilitas kantor, aplikasi review hiburan, dan visualisasi deteksi akun bot. Saya tertarik menyederhanakan proses yang kompleks menjadi produk yang jelas, konsisten, dan mudah digunakan.
             </p>
             <div className={styles.stats}>
               <div><strong>[12+]</strong><span>PROJECTS</span></div>
-              <div><strong>[3]</strong><span>YEARS</span></div>
+              <div><strong>[1]</strong><span>YEARS</span></div>
               <div><strong>[∞]</strong><span>CURIOSITY</span></div>
             </div>
           </div>
@@ -481,7 +430,6 @@ export default function Home() {
           <div className={styles.experienceHeader}>
             <span>[ 04_EXPERIENCE.LOG ]</span>
             <h2 id="experience-title">MY JOURNEY SO FAR_</h2>
-            <p>Ganti data berikut dengan pengalaman kerja, magang, organisasi, atau pendidikanmu.</p>
           </div>
           <div className={styles.logWindow}>
             <WindowBar title="CAREER_HISTORY.LOG" />
@@ -510,7 +458,7 @@ export default function Home() {
           <div className={styles.contactPixel} aria-hidden="true">✦</div>
           <span>[ 05_CONNECT ]</span>
           <h2 id="contact-title">HAVE AN IDEA?<br />LET&apos;S BUILD IT TOGETHER_</h2>
-          <p>Saya terbuka untuk [peluang kerja, proyek freelance, dan kolaborasi]. Ceritakan sedikit tentang kebutuhanmu.</p>
+          <p>Saya terbuka untuk peluang kerja sebagai UI/UX Designer atau Front-End Developer. Jika profil saya sesuai dengan kebutuhan tim Anda, saya senang untuk berdiskusi lebih lanjut.</p>
           {profileLinks.email ? (
             <a className={styles.emailLink} href={`mailto:${profileLinks.email}`}>
               {profileLinks.email} <PixelArrow diagonal />
