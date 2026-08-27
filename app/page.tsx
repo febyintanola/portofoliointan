@@ -322,13 +322,12 @@ export default function Home() {
           <div className={styles.heroCopy}>
             <div className={styles.kicker}>
               <span>[ PORTFOLIO_2026 ]</span>
-              <span>UI/UX + FRONT-END</span>
             </div>
             <h1 id="hero-title">
               MERANCANG PRODUK DIGITAL DARI <mark>ALUR</mark> HINGGA IMPLEMENTASI<span className={styles.blink}>_</span>
             </h1>
             <p>
-              Saya <strong>Intan</strong>, UI/UX Designer dan Front-End Developer. Saya mengerjakan user flow, prototype, dan design system, lalu menerjemahkannya menjadi antarmuka web yang responsif.
+              Saya <strong>Intan</strong>, Fresh Graduate dari Universitas Pembangunan Nasional Veteran Jakarta, dari jurusan Informatika dengan peminatan software engineering, berbasis di <strong>Jakarta</strong>. Saya merancang produk digital mulai dari menyusun alur pengguna dan prototype hingga mengimplementasikan antarmuka yang responsif.
             </p>
             <div className={styles.heroActions}>
               <a className={styles.pixelButton} href="#work">EXPLORE WORK <PixelArrow /></a>
@@ -350,8 +349,8 @@ export default function Home() {
               <WindowBar title="HELLO_WORLD.PNG" />
               <img src="/intanfoto.jpeg" alt="Foto Intan" />
               <div className={styles.portraitCaption}>
-                <span>NAME: INTAN FEBYOLA PUTRI DWINA SIDABUTAR</span>
-                <span>STATUS: READY_TO_CREATE</span>
+                <span>NAME : INTAN FEBYOLA PUTRI DWINA SIDABUTAR</span>
+                <span>STATUS : READY_TO_CREATE</span>
               </div>
             </div>
           </div>
@@ -398,7 +397,7 @@ export default function Home() {
           <div className={styles.aboutCopy}>
             <span className={styles.sectionCode}>[ 02_ABOUT_ME ]</span>
             <h2 id="about-title">DESIGNING CLEAR FLOWS, BUILDING FUNCTIONAL PRODUCTS_</h2>
-            <p>Saya Intan, UI/UX designer dan front-end developer berbasis di <strong>Jakarta</strong>. Saya Intan, UI/UX Designer dan Front-End Developer. Saya merancang produk digital mulai dari menyusun alur pengguna dan prototype hingga mengimplementasikan antarmuka yang responsif.
+            <p>Saya Intan, Fresh Graduate dari Universitas Pembangunan Nasional Veteran Jakarta, dari jurusan Informatika dengan peminatan software engineering, berbasis di <strong>Jakarta</strong>. Saya merancang produk digital mulai dari menyusun alur pengguna dan prototype hingga mengimplementasikan antarmuka yang responsif.
 Project saya mencakup aplikasi panduan evakuasi, sistem reservasi fasilitas kantor, aplikasi review hiburan, dan visualisasi deteksi akun bot. Saya tertarik menyederhanakan proses yang kompleks menjadi produk yang jelas, konsisten, dan mudah digunakan.
             </p>
             <div className={styles.stats}>
