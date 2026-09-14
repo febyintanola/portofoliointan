@@ -34,7 +34,7 @@ const projects: Project[] = [
     roles: ["UI/UX DESIGN", "MOBILE DESIGN", "FIGMA PROTOTYPE"],
     year: "2024",
     visual: "mobile",
-    url: "https://www.figma.com/proto/nPQd29r4aoJyYXPWb5rqkY/Quack?node-id=695-1464&p=f&viewport=389%2C458%2C0.03&t=h6jOBAOnQXppDNhW-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=659%3A1269&show-proto-sidebar=1&page-id=0%3A1",
+    url: "https://www.figma.com/proto/nPQd29r4aoJyYXPWb5rqkY/Quack?page-id=0%3A1&node-id=99-56&p=f&viewport=389%2C458%2C0.03&t=a96HYS6RhEeiEQnm-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=659%3A1269&show-proto-sidebar=1",
     linkLabel: "VIEW FIGMA PROTOTYPE",
   },
   {
@@ -162,7 +162,7 @@ const experiences = [
 
 const profileLinks = {
   email: "intanfebyola@gmail.com",
-  resumeUrl: "",
+  resumeUrl: "/creativ%20cv%20intan%20febyola.pdf",
   linkedInUrl: "https://www.linkedin.com/in/intan-febyola-sidabutar",
   gitHubUrl: "https://github.com/febyintanola",
   instagramUrl: "https://www.instagram.com/intanfebyola/",
@@ -491,10 +491,16 @@ export default function Home() {
             ))}
           </div>
           {profileLinks.resumeUrl ? (
-            <a className={styles.pixelButton} href={profileLinks.resumeUrl}>DOWNLOAD_CV.PDF <PixelArrow diagonal /></a>
+            <a
+              className={styles.pixelButton}
+              href={profileLinks.resumeUrl}
+              download="Intan-Febyola-CV.pdf"
+            >
+              DOWNLOAD_CV.PDF <PixelArrow diagonal />
+            </a>
           ) : (
             <span className={`${styles.pixelButton} ${styles.disabledButton}`} aria-label="Tautan CV belum diisi">
-              [ ADD_CV_LINK ]
+              [ CV_LINK ]
             </span>
           )}
         </section>
