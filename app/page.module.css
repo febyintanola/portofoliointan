@@ -349,6 +349,7 @@
   white-space: nowrap;
 }
 
+.journeySection,
 .workSection,
 .capabilitySection,
 .experienceSection {
@@ -356,6 +357,105 @@
   margin: 0 auto;
   padding: clamp(64px, 7vw, 100px) 0;
   scroll-margin-top: 100px;
+}
+
+.journeySection {
+  padding-bottom: clamp(36px, 5vw, 72px);
+}
+
+.growthGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 2px solid var(--navy);
+  background: var(--white);
+  box-shadow: 9px 9px 0 var(--navy);
+}
+
+.growthGrid article {
+  min-height: 330px;
+  padding: clamp(26px, 3.5vw, 46px);
+  border-right: 2px solid var(--navy);
+  border-bottom: 2px solid var(--navy);
+}
+
+.growthGrid article:nth-child(2n) {
+  border-right: 0;
+}
+
+.growthGrid article:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+.growthGrid article:nth-child(1) { background: var(--panel); }
+.growthGrid article:nth-child(2) { background: var(--yellow); }
+.growthGrid article:nth-child(3) { background: var(--periwinkle); }
+.growthGrid article:nth-child(4) { background: var(--pink); }
+
+.growthGrid article > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  color: var(--deep-blue);
+  font-size: 0.58rem;
+  font-weight: 900;
+}
+
+.growthGrid article > div span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 2px solid var(--navy);
+  background: var(--white);
+}
+
+.growthGrid h3 {
+  margin: clamp(42px, 5vw, 72px) 0 16px;
+  font-size: clamp(1.55rem, 2.5vw, 2.7rem);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.growthGrid p {
+  max-width: 600px;
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+
+.processNote {
+  display: grid;
+  margin-top: 34px;
+  padding: clamp(24px, 3vw, 38px);
+  grid-template-columns: minmax(150px, 0.45fr) minmax(300px, 1fr) minmax(260px, 1fr);
+  align-items: center;
+  gap: 28px;
+  border: 2px solid var(--navy);
+  background: var(--deep-blue);
+  color: var(--white);
+  box-shadow: 7px 7px 0 var(--navy);
+}
+
+.processNote span {
+  color: var(--panel-strong);
+  font-size: 0.6rem;
+  font-weight: 850;
+}
+
+.processNote strong {
+  color: var(--yellow);
+  font-size: clamp(0.82rem, 1.3vw, 1.1rem);
+  line-height: 1.6;
+}
+
+.processNote p {
+  margin: 0;
+  color: #d9e6ff;
+  font-size: 0.72rem;
+  line-height: 1.65;
 }
 
 .workSection {
@@ -497,23 +597,56 @@
   font-weight: 750;
 }
 
-.projectResult {
+.projectOwnership {
+  display: flex;
   width: 100%;
-  margin: 26px 0 20px;
+  margin: 2px 0 22px;
   padding: 12px 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   border-block: 2px dashed var(--navy);
   font-size: 0.6rem;
+  font-weight: 850;
 }
 
-.projectResult span,
-.projectResult strong {
-  display: block;
+.projectOwnership strong {
+  padding: 6px 8px;
+  border: 1px solid var(--navy);
+  background: var(--white);
 }
 
-.projectResult strong {
-  margin-top: 7px;
+.projectOwnership .groupProject {
+  background: var(--yellow);
+}
+
+.projectStory {
+  display: grid;
+  width: 100%;
+  margin: 0 0 22px;
+  gap: 0;
+}
+
+.projectStory > div {
+  display: grid;
+  padding: 12px 0;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 14px;
+  border-bottom: 1px solid color-mix(in srgb, var(--navy) 34%, transparent);
+}
+
+.projectStory dt {
   color: var(--deep-blue);
-  font-size: 0.65rem;
+  font-size: 0.55rem;
+  font-weight: 900;
+  line-height: 1.5;
+}
+
+.projectStory dd {
+  margin: 0;
+  font-family: var(--font-sans), Arial, sans-serif;
+  font-size: 0.74rem;
+  line-height: 1.55;
 }
 
 .inlineLink {
@@ -1270,6 +1403,14 @@
     width: 92%;
   }
 
+  .processNote {
+    grid-template-columns: minmax(160px, 0.5fr) minmax(0, 1.5fr);
+  }
+
+  .processNote p {
+    grid-column: 2;
+  }
+
   .aboutSection {
     grid-template-columns: minmax(330px, 0.8fr) minmax(0, 1.2fr);
   }
@@ -1347,6 +1488,30 @@
     grid-template-columns: 1fr;
   }
 
+  .growthGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .growthGrid article,
+  .growthGrid article:nth-child(2n),
+  .growthGrid article:nth-last-child(-n + 2) {
+    min-height: 280px;
+    border-right: 0;
+    border-bottom: 2px solid var(--navy);
+  }
+
+  .growthGrid article:last-child {
+    border-bottom: 0;
+  }
+
+  .processNote {
+    grid-template-columns: 1fr;
+  }
+
+  .processNote p {
+    grid-column: auto;
+  }
+
   .projectInfo,
   .projectReverse .projectInfo {
     border-right: 0;
@@ -1403,6 +1568,7 @@
 
 @media (max-width: 640px) {
   .hero,
+  .journeySection,
   .workSection,
   .capabilitySection,
   .experienceSection,
@@ -1466,6 +1632,8 @@
   .idWindow,
   .logWindow,
   .projectCard,
+  .growthGrid,
+  .processNote,
   .aboutSection,
   .capabilityGrid,
   .contactSection {
@@ -1485,6 +1653,7 @@
     padding-inline: 14px;
   }
 
+  .journeySection,
   .workSection,
   .capabilitySection,
   .experienceSection {
@@ -1493,6 +1662,15 @@
 
   .workSection {
     padding-top: 36px;
+  }
+
+  .growthGrid article {
+    min-height: 0;
+    padding: 28px;
+  }
+
+  .growthGrid h3 {
+    margin-top: 42px;
   }
 
   .sectionHeading h2,
@@ -1511,6 +1689,16 @@
 
   .projectInfo h3 {
     font-size: clamp(2.2rem, 12vw, 3.3rem);
+  }
+
+  .projectOwnership {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .projectStory > div {
+    grid-template-columns: 1fr;
+    gap: 5px;
   }
 
   .projectPreview {

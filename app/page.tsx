@@ -1,98 +1,141 @@
 import styles from "./page.module.css";
 
-type ProjectVisual = "mobile" | "reservation" | "entertainment" | "network" | "service";
+type ProjectVisual = "mobile" | "reservation" | "entertainment" | "network";
 
 type Project = {
   number: string;
   title: string;
   category: string;
   description: string;
+  context: string;
+  collaboration: string;
+  myRole: string;
+  impact: string;
+  learning: string;
   roles: string[];
-  result: string;
   year: string;
   visual: ProjectVisual;
   url: string;
+  linkLabel: string;
 };
 
 const projects: Project[] = [
   {
-    number: "01/05",
+    number: "01/04",
     title: "Quack",
     category: "UI/UX DESIGN · MOBILE APP",
     description:
-      "Aplikasi panduan evakuasi bencana yang menyediakan langkah keselamatan dan tombol SOS untuk membantu tim evakuasi untuk menemukan pengguna.",
+      "A mobile disaster-evacuation guide that puts safety instructions and an SOS flow in one place. The prototype helps users find the right action quickly during a high-stress situation.",
+    context: "CLASS ASSIGNMENT",
+    collaboration: "GROUP PROJECT",
+    myRole: "UI/UX Designer — I shaped the information architecture, user flows, interface, and interactive prototype.",
+    impact: "I translated complex emergency guidance into a focused end-to-end flow, making the most critical actions easier to find and understand.",
+    learning: "I learned to prioritize clarity, accessibility, and low cognitive load when designing for urgent situations.",
     roles: ["UI/UX DESIGN", "MOBILE DESIGN", "FIGMA PROTOTYPE"],
-    result: "PROTOTYPE INTERAKTIF PANDUAN EVAKUASI & SOS",
     year: "2024",
     visual: "mobile",
     url: "https://www.figma.com/proto/nPQd29r4aoJyYXPWb5rqkY/Quack?node-id=695-1464&p=f&viewport=389%2C458%2C0.03&t=h6jOBAOnQXppDNhW-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=659%3A1269&show-proto-sidebar=1&page-id=0%3A1",
+    linkLabel: "VIEW FIGMA PROTOTYPE",
   },
   {
-    number: "02/05",
+    number: "02/04",
     title: "RUMA",
     category: "UI/UX DESIGN · WEB DEVELOPMENT",
     description:
-      "Platform untuk melakukan reservasi ruang rapat dan mobil dinas kantor.",
+      "An internal web application for booking meeting rooms and company vehicles. It brings both reservation processes into one consistent, trackable workflow.",
+    context: "WORK ASSIGNMENT · INTERNSHIP",
+    collaboration: "INDIVIDUAL PROJECT",
+    myRole: "Product Designer & Full-Stack Developer — I designed the system and implemented the booking experience in CodeIgniter 4.",
+    impact: "I consolidated two facility-booking needs into one interface and built reusable patterns that keep forms, schedules, and booking states consistent.",
+    learning: "I learned how to turn stakeholder requirements into a working internal tool and carry design decisions through to implementation.",
     roles: ["DESIGN SYSTEM", "CODEIGNITER 4", "FULL-STACK DEVELOPMENT"],
-    result: "Web app untuk reservasi ruang rapat dan mobil dinas kantor",
     year: "2025",
     visual: "reservation",
     url: "https://github.com/febyintanola/reservasi",
+    linkLabel: "VIEW SOURCE CODE",
   },
   {
-    number: "03/05",
+    number: "03/04",
     title: "BUZZ BUZZ",
     category: "UX REDESIGN · DASHBOARD",
     description:
-      "Aplikasi review dan rating untuk film dan serial TV, dengan fitur rekomendasi berdasarkan preferensi pengguna.",
+      "A mobile entertainment app for reviewing and rating films and TV series. Its discovery experience recommends titles around each user’s preferences.",
+    context: "CLASS ASSIGNMENT",
+    collaboration: "GROUP PROJECT",
+    myRole: "UI/UX Designer & Front-End Developer — I contributed research, designed the main flows, and translated the interface into code.",
+    impact: "I connected research insights to a clearer discovery, rating, and review journey while creating consistent patterns for entertainment content.",
+    learning: "I learned to align design decisions within a team and maintain consistency between research, interface design, and front-end delivery.",
     roles: ["UI/UX DESIGN", "FRONT-END", "RESEARCH"],
-    result: "Aplikasi Mobile review dan rating untuk film dan serial TV",
     year: "2025",
     visual: "entertainment",
     url: "https://github.com/febyintanola/Buzz-Buzz.git",
+    linkLabel: "VIEW SOURCE CODE",
   },
   {
-    number: "04/05",
-    title: "Deteksi Jaringan Bot",
+    number: "04/04",
+    title: "Bot Network Detection",
     category: "UI/UX DESIGN · WEB DEVELOPMENT",
     description:
-      "Web app untuk mendeteksi akun bot di media sosial menggunakan algoritma machine learning, dengan visualisasi data interaktif.",
+      "A web application that uses machine learning to detect suspected bot accounts on TikTok. Interactive network visualizations make relationships and detection results easier to investigate.",
+    context: "FINAL PROJECT",
+    collaboration: "INDIVIDUAL PROJECT",
+    myRole: "UI/UX Designer & Full-Stack Developer — I designed the analytical workflow and integrated the FastAPI service, model output, and visualizations.",
+    impact: "I turned technical detection output into an explorable interface, helping users interpret account relationships instead of reading isolated model results.",
+    learning: "I learned to design for explainability, handle data-heavy interface states, and connect a machine-learning backend to a usable product experience.",
     roles: ["UI/UX DESIGN", "Full-Stack Development", "DATA VISUALIZATION", "FastAPI"],
-    result: "Web app untuk mendeteksi akun bot di media sosial (tiktok)",
     year: "2026",
     visual: "network",
-    url: "https://github.com/febyintanola/DeteksiJaringanBot  ",
+    url: "https://github.com/febyintanola/DeteksiJaringanBot",
+    linkLabel: "VIEW SOURCE CODE",
+  },
+];
+
+const growthPillars = [
+  {
+    number: "01",
+    title: "CURIOSITY WITH DIRECTION",
+    value: "INTEREST & MOTIVATION",
+    description:
+      "I am excited by the space between an idea and a product people can actually use. This nine-month journey is a chance to deepen my craft, learn from people with different perspectives, and become more intentional about the problems I choose to solve.",
   },
   {
-    number: "05/05",
-    title: "Aplikasi SOA apa ya..",
-    category: "UI/UX DESIGN · MOBILE APP",
+    number: "02",
+    title: "IDEAS MADE VISIBLE",
+    value: "CREATIVITY & EXPRESSION",
     description:
-      "Deskripsi proyek lainnya.",
-    roles: ["UI/UX DESIGN", "MOBILE DESIGN"],
-    result: "[TAMBAHKAN METRIK]",
-    year: "2025",
-    visual: "service",
-    url: "",
+      "I express ideas by mapping flows, testing visual directions, and building interactive prototypes. The playful interface of this portfolio is also an experiment: a way to make technical work feel personal, approachable, and unmistakably mine.",
   },
-  
+  {
+    number: "03",
+    title: "DESIGN MEETS CODE",
+    value: "INTERDISCIPLINARY POTENTIAL",
+    description:
+      "My projects connect user research, interface design, front-end development, and machine learning. Moving across disciplines helps me ask better questions and understand both the human experience and the system behind it.",
+  },
+  {
+    number: "04",
+    title: "PROGRESS OVER PERFECTION",
+    value: "WORK ETHIC & EXCELLENCE",
+    description:
+      "I work through small, deliberate iterations: understand the problem, document decisions, build, test, and improve. I care about polish, but I value the reasoning, feedback, and persistence that make the final result stronger.",
+  },
 ];
 
 const capabilities = [
   {
     number: "01",
     title: "PRODUCT DESIGN",
-    description: "Riset pengguna, user flow, wireframe, dan prototype yang menjawab masalah nyata.",
+    description: "User research, flows, wireframes, and prototypes grounded in real problems.",
   },
   {
     number: "02",
     title: "FRONT-END",
-    description: "Website responsif dan accessible menggunakan React, Next.js, dan TypeScript.",
+    description: "Responsive, accessible interfaces built with React, Next.js, and TypeScript.",
   },
   {
     number: "03",
     title: "DESIGN SYSTEM",
-    description: "Komponen dan aturan visual yang konsisten agar produk mudah berkembang.",
+    description: "Reusable components and visual rules that help products grow consistently.",
   },
 ];
 
@@ -101,19 +144,19 @@ const experiences = [
     period: "[July 2025 — November 2025]",
     role: "SIS Intern",
     company: "PT PLN Indonesia Power Unit Bisnis Pemeliharaan",
-    description: "Merancang pengalaman pengguna dan antarmuka web untuk aplikasi reservasi ruang rapat dan mobil dinas kantor.",
+    description: "Designed and developed the user experience for an internal meeting-room and company-vehicle reservation application.",
   },
   {
     period: "[2022 — 2026]",
     role: "Anggota",
     company: "Gita Advayatva",
-    description: "UKM paduan suara di Universitas Pembangunan Nasional Veteran Jakarta, berpartisipasi dalam latihan rutin dan pertunjukan.",
+    description: "Practiced and performed with the university choir, building discipline, collaboration, and confidence beyond software work.",
   },
   {
     period: "[2022 — 2026]",
     role: "Mahasiswa",
     company: "Universitas Pembangunan Nasional Veteran Jakarta",
-    description: "Belajar desain interaksi, pengembangan web, dan pemrograman front-end sebagai bagian dari jurusan Teknik Informatika.",
+    description: "Studied interaction design, web development, and software engineering while exploring how technology can solve human problems.",
   },
 ];
 
@@ -127,39 +170,6 @@ const profileLinks = {
 
 function PixelArrow({ diagonal = false }: { diagonal?: boolean }) {
   return <span aria-hidden="true">{diagonal ? "↗" : "→"}</span>;
-}
-
-function PixelPortrait() {
-  return (
-    <svg
-      className={styles.pixelPortrait}
-      viewBox="0 0 24 24"
-      role="img"
-      aria-label="Placeholder ilustrasi pixel Intan bekerja dengan laptop"
-      shapeRendering="crispEdges"
-    >
-      <rect x="0" y="0" width="24" height="24" fill="#A9CEFF" />
-      <rect x="2" y="2" width="2" height="2" fill="#FFF2A8" />
-      <rect x="4" y="4" width="1" height="1" fill="#111827" />
-      <rect x="19" y="3" width="2" height="1" fill="#111827" />
-      <rect x="20" y="2" width="1" height="3" fill="#111827" />
-      <rect x="18" y="3" width="4" height="1" fill="#111827" />
-      <rect x="7" y="5" width="8" height="2" fill="#172554" />
-      <rect x="6" y="7" width="10" height="4" fill="#172554" />
-      <rect x="8" y="7" width="7" height="6" fill="#FFC7B8" />
-      <rect x="9" y="9" width="1" height="1" fill="#111827" />
-      <rect x="13" y="9" width="1" height="1" fill="#111827" />
-      <rect x="10" y="11" width="3" height="1" fill="#D56A85" />
-      <rect x="7" y="13" width="9" height="2" fill="#C8C5FF" />
-      <rect x="6" y="15" width="11" height="5" fill="#789EEB" />
-      <rect x="4" y="17" width="4" height="2" fill="#FFC7B8" />
-      <rect x="16" y="16" width="3" height="3" fill="#FFC7B8" />
-      <rect x="9" y="18" width="11" height="4" fill="#F8FBFF" />
-      <rect x="10" y="19" width="9" height="2" fill="#172554" />
-      <rect x="12" y="19" width="2" height="1" fill="#A9CEFF" />
-      <rect x="3" y="22" width="19" height="1" fill="#111827" />
-    </svg>
-  );
 }
 
 function SocialItem({ label, href }: { label: string; href: string }) {
@@ -239,23 +249,11 @@ function NetworkPreview() {
   );
 }
 
-function ServicePreview() {
-  return (
-    <div className={`${styles.projectPreview} ${styles.ServicePreview}`} aria-hidden="true">
-      <div className={styles.appWindow}>
-        <WindowBar title="SERVICE_APP.PNG" />
-        <PixelPortrait />
-      </div>
-    </div>
-  );
-}
-
 function ProjectPreview({ type }: { type: ProjectVisual }) {
   if (type === "mobile") {return <MobilePreview />;}
   if (type === "reservation") {return <ReservationPreview />;}
   if (type === "entertainment") {return <EntertainmentPreview />;}
-  if (type === "network") {return <NetworkPreview />;}
-  return <ServicePreview />;
+  return <NetworkPreview />;
 }
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -270,16 +268,32 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <h3>{project.title}_</h3>
         <span className={styles.projectCategory}>{project.category}</span>
         <p>{project.description}</p>
+        <div className={styles.projectOwnership}>
+          <span>{project.context}</span>
+          <strong className={project.collaboration === "GROUP PROJECT" ? styles.groupProject : ""}>
+            {project.collaboration}
+          </strong>
+        </div>
+        <dl className={styles.projectStory}>
+          <div>
+            <dt>MY ROLE</dt>
+            <dd>{project.myRole}</dd>
+          </div>
+          <div>
+            <dt>IMPACT</dt>
+            <dd>{project.impact}</dd>
+          </div>
+          <div>
+            <dt>WHAT I LEARNED</dt>
+            <dd>{project.learning}</dd>
+          </div>
+        </dl>
         <ul aria-label={`Keahlian yang digunakan pada ${project.title}`}>
           {project.roles.map((role) => <li key={role}>{role}</li>)}
         </ul>
-        <div className={styles.projectResult}>
-          <span>OUTPUT:</span>
-          <strong>{project.result}</strong>
-        </div>
         {project.url ? (
-          <a href={project.url} className={styles.inlineLink}>
-            LIHAT DETAIL <PixelArrow diagonal />
+          <a href={project.url} className={styles.inlineLink} target="_blank" rel="noreferrer">
+            {project.linkLabel} <PixelArrow diagonal />
           </a>
         ) : (
           <span className={`${styles.inlineLink} ${styles.disabledInline}`} aria-label={`Tautan proyek ${project.title} belum diisi`}>
@@ -301,19 +315,19 @@ export default function Home() {
         <a className={styles.logo} href="#top" aria-label="Kembali ke bagian atas">
           <span aria-hidden="true">■</span> INTAN.EXE
         </a>
-        <nav className={styles.navigation} aria-label="Navigasi utama">
+        <nav className={styles.navigation} aria-label="Primary navigation">
+          <a href="#journey">JOURNEY</a>
           <a href="#work">WORK</a>
           <a href="#about">ABOUT</a>
-          <a href="#experience">LOG</a>
           <a href="#contact">CONNECT</a>
         </nav>
         <div className={styles.onlineStatus}><span aria-hidden="true" /> AVAILABLE</div>
       </header>
 
-      <nav className={styles.mobileNavigation} aria-label="Navigasi utama versi seluler">
+      <nav className={styles.mobileNavigation} aria-label="Mobile navigation">
+        <a href="#journey">JOURNEY</a>
         <a href="#work">WORK</a>
         <a href="#about">ABOUT</a>
-        <a href="#experience">LOG</a>
         <a href="#contact">CONTACT</a>
       </nav>
 
@@ -324,14 +338,14 @@ export default function Home() {
               <span>[ PORTFOLIO_2026 ]</span>
             </div>
             <h1 id="hero-title">
-              MERANCANG PRODUK DIGITAL DARI <mark>ALUR</mark> HINGGA IMPLEMENTASI<span className={styles.blink}>_</span>
+              I LEARN BY TURNING <mark>COMPLEX IDEAS</mark> INTO PRODUCTS PEOPLE CAN USE<span className={styles.blink}>_</span>
             </h1>
             <p>
-              Saya <strong>Intan</strong>, Fresh Graduate dari Universitas Pembangunan Nasional Veteran Jakarta(UPNVJ), dari jurusan Informatika dengan peminatan software engineering, berbasis di <strong>Jakarta</strong>. Saya merancang produk digital mulai dari menyusun alur pengguna dan prototype hingga mengimplementasikan antarmuka yang responsif.
+              I&apos;m <strong>Intan</strong>, a Jakarta-based Informatics graduate who moves between user research, interface design, and front-end development. I&apos;m ready to spend the next nine months learning deeply, exchanging perspectives, and growing from someone who makes functional products into someone who asks sharper questions about why they should exist.
             </p>
             <div className={styles.heroActions}>
               <a className={styles.pixelButton} href="#work">EXPLORE WORK <PixelArrow /></a>
-              <a className={`${styles.pixelButton} ${styles.lightButton}`} href="#contact">LET&apos;S TALK</a>
+              <a className={`${styles.pixelButton} ${styles.lightButton}`} href="#journey">MY JOURNEY</a>
             </div>
             <div className={styles.heroFootnote}>
               <span>BASED IN [Jakarta, INDONESIA]</span>
@@ -342,7 +356,7 @@ export default function Home() {
           <div className={styles.heroSide}>
             <div className={styles.missionBox}>
               <span className={styles.pixelBracket} aria-hidden="true">[</span>
-              <p><strong>MY MISSION</strong><br />DESIGN WITH CLARITY,<br />BUILD WITH CARE.</p>
+              <p><strong>MY MINDSET</strong><br />STAY CURIOUS,<br />MAKE IT CLEAR,<br />KEEP ITERATING.</p>
               <span className={styles.pixelBracket} aria-hidden="true">]</span>
             </div>
             <div className={styles.portraitWindow}>
@@ -350,7 +364,7 @@ export default function Home() {
               <img src="/intanfoto.jpeg" alt="Foto Intan" />
               <div className={styles.portraitCaption}>
                 <span>NAME : INTAN FEBYOLA PUTRI DWINA SIDABUTAR</span>
-                <span>STATUS : READY_TO_CREATE</span>
+                <span>STATUS : READY_TO_LEARN</span>
               </div>
             </div>
           </div>
@@ -364,11 +378,40 @@ export default function Home() {
           <span>✦ CREATIVE CODING</span>
         </div>
 
+        <section className={styles.journeySection} id="journey" aria-labelledby="journey-title">
+          <div className={styles.sectionHeading}>
+            <span>[ 01_LEARNING_JOURNEY ]</span>
+            <div>
+              <h2 id="journey-title">WHAT DRIVES ME FORWARD_</h2>
+              <p>
+                I do not see this portfolio as a gallery of finished screens. It is a record of how I think, where disciplines meet, and how each project changed the way I approach the next one.
+              </p>
+            </div>
+          </div>
+          <div className={styles.growthGrid}>
+            {growthPillars.map((pillar) => (
+              <article key={pillar.number}>
+                <div><span>{pillar.number}</span><strong>{pillar.value}</strong></div>
+                <h3>{pillar.title}</h3>
+                <p>{pillar.description}</p>
+              </article>
+            ))}
+          </div>
+          <div className={styles.processNote}>
+            <span>[ MY_PROCESS.LOG ]</span>
+            <strong>QUESTION → MAP → PROTOTYPE → BUILD → REFLECT → REPEAT</strong>
+            <p>
+              WORK IN PROGRESS: This portfolio is part of that loop. I continue refining its story, accessibility, and code as I learn what communicates my work most honestly.
+            </p>
+          </div>
+        </section>
+
         <section className={styles.workSection} id="work" aria-labelledby="work-title">
           <div className={styles.sectionHeading}>
-            <span>[ 01_SELECTED_WORK ]</span>
+            <span>[ 02_SELECTED_WORK ]</span>
             <div>
               <h2 id="work-title">PROJECTS I&apos;M PROUD OF_</h2>
+              <p>Each project below includes the context, my responsibility, the contribution I made, and the lesson I carried forward.</p>
             </div>
           </div>
           <div className={styles.projectList}>
@@ -395,14 +438,17 @@ export default function Home() {
           </div>
 
           <div className={styles.aboutCopy}>
-            <span className={styles.sectionCode}>[ 02_ABOUT_ME ]</span>
-            <h2 id="about-title">DESIGNING CLEAR FLOWS, BUILDING FUNCTIONAL PRODUCTS_</h2>
-            <p>Saya Intan, Fresh Graduate dari Universitas Pembangunan Nasional Veteran Jakarta, dari jurusan Informatika dengan peminatan software engineering, berbasis di <strong>Jakarta</strong>. Saya merancang produk digital mulai dari menyusun alur pengguna dan prototype hingga mengimplementasikan antarmuka yang responsif.
-Project saya mencakup aplikasi panduan evakuasi, sistem reservasi fasilitas kantor, aplikasi review hiburan, dan visualisasi deteksi akun bot. Saya tertarik menyederhanakan proses yang kompleks menjadi produk yang jelas, konsisten, dan mudah digunakan.
+            <span className={styles.sectionCode}>[ 03_ABOUT_ME ]</span>
+            <h2 id="about-title">A DESIGNER WHO BUILDS, A DEVELOPER WHO LISTENS_</h2>
+            <p>
+              My path through Informatics taught me that good digital products need more than technical correctness. They need empathy, structure, communication, and the courage to revise an early idea. That is why I enjoy working from user flow to prototype and from interface to implementation.
+            </p>
+            <p>
+              My work ranges from disaster guidance and workplace reservations to entertainment discovery and bot-network analysis. The subjects change, but my motivation stays the same: <strong>make complexity understandable, then make the experience useful.</strong>
             </p>
             <div className={styles.stats}>
-              <div><strong>[12+]</strong><span>PROJECTS</span></div>
-              <div><strong>[1]</strong><span>YEARS</span></div>
+              <div><strong>[10+]</strong><span>CASE STUDIES</span></div>
+              <div><strong>[03]</strong><span>CONNECTED DISCIPLINES</span></div>
               <div><strong>[∞]</strong><span>CURIOSITY</span></div>
             </div>
           </div>
@@ -410,7 +456,7 @@ Project saya mencakup aplikasi panduan evakuasi, sistem reservasi fasilitas kant
 
         <section className={styles.capabilitySection} aria-labelledby="capability-title">
           <div className={styles.sectionHeading}>
-            <span>[ 03_CAPABILITIES ]</span>
+            <span>[ 04_CAPABILITIES ]</span>
             <div><h2 id="capability-title">WHAT I CAN DO_</h2></div>
           </div>
           <div className={styles.capabilityGrid}>
@@ -427,7 +473,7 @@ Project saya mencakup aplikasi panduan evakuasi, sistem reservasi fasilitas kant
 
         <section className={styles.experienceSection} id="experience" aria-labelledby="experience-title">
           <div className={styles.experienceHeader}>
-            <span>[ 04_EXPERIENCE.LOG ]</span>
+            <span>[ 05_EXPERIENCE.LOG ]</span>
             <h2 id="experience-title">MY JOURNEY SO FAR_</h2>
           </div>
           <div className={styles.logWindow}>
@@ -455,9 +501,9 @@ Project saya mencakup aplikasi panduan evakuasi, sistem reservasi fasilitas kant
 
         <section className={styles.contactSection} id="contact" aria-labelledby="contact-title">
           <div className={styles.contactPixel} aria-hidden="true">✦</div>
-          <span>[ 05_CONNECT ]</span>
-          <h2 id="contact-title">HAVE AN IDEA?<br />LET&apos;S BUILD IT TOGETHER_</h2>
-          <p>Saya terbuka untuk peluang kerja sebagai UI/UX Designer atau Front-End Developer. Jika profil saya sesuai dengan kebutuhan tim Anda, saya senang untuk berdiskusi lebih lanjut.</p>
+          <span>[ 06_CONNECT ]</span>
+          <h2 id="contact-title">LET&apos;S LEARN, QUESTION,<br />AND BUILD TOGETHER_</h2>
+          <p>I am open to learning opportunities and roles in UI/UX design or front-end development. I would love to bring my curiosity, cross-disciplinary perspective, and care for craft to a team that values growth.</p>
           {profileLinks.email ? (
             <a className={styles.emailLink} href={`mailto:${profileLinks.email}`}>
               {profileLinks.email} <PixelArrow diagonal />

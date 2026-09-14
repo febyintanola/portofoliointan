@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Intan — UI/UX Designer & Front-End Developer",
   description:
-    "Portofolio Intan, UI/UX designer dan front-end developer yang merancang pengalaman digital yang jernih, responsif, dan berkarakter.",
+    "Intan's portfolio: a learning journey across UI/UX design, front-end development, and creative technology.",
   keywords: [
     "UI/UX Designer",
     "Front-End Developer",
@@ -27,16 +27,16 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Intan — UI/UX Designer & Front-End Developer",
     description:
-      "Merancang pengalaman digital yang jernih, responsif, dan berkarakter.",
+      "A learning journey across UI/UX design, front-end development, and creative technology.",
     type: "website",
-    locale: "id_ID",
+    locale: "en_US",
   },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="id"
+      lang="en"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
       <body>{children}</body>
