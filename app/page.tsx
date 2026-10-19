@@ -1,94 +1,6 @@
 import styles from "./page.module.css";
-
-type ProjectVisual = "mobile" | "reservation" | "entertainment" | "network";
-
-type Project = {
-  number: string;
-  title: string;
-  category: string;
-  description: string;
-  context: string;
-  collaboration: string;
-  myRole: string;
-  impact: string;
-  learning: string;
-  roles: string[];
-  year: string;
-  visual: ProjectVisual;
-  url: string;
-  linkLabel: string;
-};
-
-const projects: Project[] = [
-  {
-    number: "01/04",
-    title: "Quack",
-    category: "UI/UX DESIGN · MOBILE APP",
-    description:
-      "A mobile disaster-evacuation guide that puts safety instructions and an SOS flow in one place. The prototype helps users find the right action quickly during a high-stress situation.",
-    context: "CLASS ASSIGNMENT",
-    collaboration: "GROUP PROJECT",
-    myRole: "UI/UX Designer — I shaped the information architecture, user flows, interface, and interactive prototype.",
-    impact: "I translated complex emergency guidance into a focused end-to-end flow, making the most critical actions easier to find and understand.",
-    learning: "I learned to prioritize clarity, accessibility, and low cognitive load when designing for urgent situations.",
-    roles: ["UI/UX DESIGN", "MOBILE DESIGN", "FIGMA PROTOTYPE"],
-    year: "2024",
-    visual: "mobile",
-    url: "https://www.figma.com/proto/nPQd29r4aoJyYXPWb5rqkY/Quack?page-id=0%3A1&node-id=99-56&p=f&viewport=389%2C458%2C0.03&t=a96HYS6RhEeiEQnm-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=659%3A1269&show-proto-sidebar=1",
-    linkLabel: "VIEW FIGMA PROTOTYPE",
-  },
-  {
-    number: "02/04",
-    title: "RUMA",
-    category: "UI/UX DESIGN · WEB DEVELOPMENT",
-    description:
-      "An internal web application for booking meeting rooms and company vehicles. It brings both reservation processes into one consistent, trackable workflow.",
-    context: "WORK ASSIGNMENT · INTERNSHIP",
-    collaboration: "INDIVIDUAL PROJECT",
-    myRole: "Product Designer & Full-Stack Developer — I designed the system and implemented the booking experience in CodeIgniter 4.",
-    impact: "I consolidated two facility-booking needs into one interface and built reusable patterns that keep forms, schedules, and booking states consistent.",
-    learning: "I learned how to turn stakeholder requirements into a working internal tool and carry design decisions through to implementation.",
-    roles: ["DESIGN SYSTEM", "CODEIGNITER 4", "FULL-STACK DEVELOPMENT"],
-    year: "2025",
-    visual: "reservation",
-    url: "https://github.com/febyintanola/reservasi",
-    linkLabel: "VIEW SOURCE CODE",
-  },
-  {
-    number: "03/04",
-    title: "BUZZ BUZZ",
-    category: "UX REDESIGN · DASHBOARD",
-    description:
-      "A mobile entertainment app for reviewing and rating films and TV series. Its discovery experience recommends titles around each user’s preferences.",
-    context: "CLASS ASSIGNMENT",
-    collaboration: "GROUP PROJECT",
-    myRole: "UI/UX Designer & Front-End Developer — I contributed research, designed the main flows, and translated the interface into code.",
-    impact: "I connected research insights to a clearer discovery, rating, and review journey while creating consistent patterns for entertainment content.",
-    learning: "I learned to align design decisions within a team and maintain consistency between research, interface design, and front-end delivery.",
-    roles: ["UI/UX DESIGN", "FRONT-END", "RESEARCH"],
-    year: "2025",
-    visual: "entertainment",
-    url: "https://github.com/febyintanola/Buzz-Buzz.git",
-    linkLabel: "VIEW SOURCE CODE",
-  },
-  {
-    number: "04/04",
-    title: "Bot Network Detection",
-    category: "UI/UX DESIGN · WEB DEVELOPMENT",
-    description:
-      "A web application that uses machine learning to detect suspected bot accounts on TikTok. Interactive network visualizations make relationships and detection results easier to investigate.",
-    context: "FINAL PROJECT",
-    collaboration: "INDIVIDUAL PROJECT",
-    myRole: "UI/UX Designer & Full-Stack Developer — I designed the analytical workflow and integrated the FastAPI service, model output, and visualizations.",
-    impact: "I turned technical detection output into an explorable interface, helping users interpret account relationships instead of reading isolated model results.",
-    learning: "I learned to design for explainability, handle data-heavy interface states, and connect a machine-learning backend to a usable product experience.",
-    roles: ["UI/UX DESIGN", "Full-Stack Development", "DATA VISUALIZATION", "FastAPI"],
-    year: "2026",
-    visual: "network",
-    url: "https://github.com/febyintanola/DeteksiJaringanBot",
-    linkLabel: "VIEW SOURCE CODE",
-  },
-];
+import { projects, type Project, type ProjectVisual } from "@/lib/projects";
+import ScrollCompanion from "./ScrollCompanion";
 
 const growthPillars = [
   {
@@ -206,8 +118,8 @@ function MobilePreview() {
     <div className={`${styles.projectPreview} ${styles.MobilePreview}`} aria-hidden="true">
       <span className={styles.pixelSpark}>✦</span>
       <div className={styles.appWindow}>
-        <WindowBar title="Quack.app" />
-        <img src="/Quack.png" alt="Tampilan aplikasi Quack" />
+        <WindowBar title="QUAKE.app" />
+        <img src="/Quack.png" alt="Tampilan aplikasi QUAKE" />
       </div>
     </div>
   );
@@ -258,7 +170,11 @@ function ProjectPreview({ type }: { type: ProjectVisual }) {
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
-    <article className={`${styles.projectCard} ${index % 2 === 1 ? styles.projectReverse : ""}`}>
+    <a
+      className={`${styles.projectCard} ${index % 2 === 1 ? styles.projectReverse : ""}`}
+      href={`/projects/${project.slug}`}
+      aria-label={`Buka dokumentasi project ${project.title}`}
+    >
       <div className={styles.projectInfo}>
         <div className={styles.projectMeta}>
           <span>{project.number}</span>
@@ -291,18 +207,12 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <ul aria-label={`Keahlian yang digunakan pada ${project.title}`}>
           {project.roles.map((role) => <li key={role}>{role}</li>)}
         </ul>
-        {project.url ? (
-          <a href={project.url} className={styles.inlineLink} target="_blank" rel="noreferrer">
-            {project.linkLabel} <PixelArrow diagonal />
-          </a>
-        ) : (
-          <span className={`${styles.inlineLink} ${styles.disabledInline}`} aria-label={`Tautan proyek ${project.title} belum diisi`}>
-            [ ADD_PROJECT_LINK ]
-          </span>
-        )}
+        <span className={styles.inlineLink}>
+          VIEW CASE STUDY <PixelArrow diagonal />
+        </span>
       </div>
       <ProjectPreview type={project.visual} />
-    </article>
+    </a>
   );
 }
 
@@ -310,10 +220,11 @@ export default function Home() {
   return (
     <div className={styles.siteShell}>
       <a className="skip-link" href="#main-content">Lewati ke konten utama</a>
+      <ScrollCompanion />
 
       <header className={styles.header}>
         <a className={styles.logo} href="#top" aria-label="Kembali ke bagian atas">
-          <span aria-hidden="true">■</span> INTAN.EXE
+          <img className={styles.logoMark} src="/logo.png" alt="Logo Intan" /> INTAN.EXE
         </a>
         <nav className={styles.navigation} aria-label="Primary navigation">
           <a href="#journey">JOURNEY</a>

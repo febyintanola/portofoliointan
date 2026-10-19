@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   title: "Intan — UI/UX Designer & Front-End Developer",
   description:
     "Intan's portfolio: a learning journey across UI/UX design, front-end development, and creative technology.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
   keywords: [
     "UI/UX Designer",
     "Front-End Developer",
