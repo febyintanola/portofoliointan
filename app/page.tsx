@@ -64,12 +64,13 @@ const experiences = [
     company: "Gita Advayatva",
     description: "Practiced and performed with the university choir, building discipline, collaboration, and confidence beyond software work.",
   },
-  {
-    period: "[2022 — 2026]",
-    role: "Mahasiswa",
-    company: "Universitas Pembangunan Nasional Veteran Jakarta",
-    description: "Studied interaction design, web development, and software engineering while exploring how technology can solve human problems.",
-  },
+];
+
+const academicProfile = [
+  { label: "GPA / IPK", value: "3.91", detail: "SCALE / 4.00" },
+  { label: "UNIVERSITY", value: "UPN VETERAN JAKARTA", detail: "BACHELOR'S PROGRAM" },
+  { label: "MAJOR", value: "INFORMATICS", detail: "BACHELOR'S DEGREE" },
+  { label: "GRADUATION", value: "2026", detail: "CLASS OF 2026" },
 ];
 
 const profileLinks = {
@@ -95,7 +96,7 @@ function SocialItem({ label, href }: { label: string; href: string }) {
 
   return (
     <a href={href} target="_blank" rel="noreferrer" aria-label={`${label} Intan, dibuka di tab baru`}>
-      {label} <PixelArrow diagonal />
+      {label} <span className={styles.externalBadge}>↗</span>
     </a>
   );
 }
@@ -190,20 +191,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             {project.collaboration}
           </strong>
         </div>
-        <dl className={styles.projectStory}>
-          <div>
-            <dt>MY ROLE</dt>
-            <dd>{project.myRole}</dd>
-          </div>
-          <div>
-            <dt>IMPACT</dt>
-            <dd>{project.impact}</dd>
-          </div>
-          <div>
-            <dt>WHAT I LEARNED</dt>
-            <dd>{project.learning}</dd>
-          </div>
-        </dl>
         <ul aria-label={`Keahlian yang digunakan pada ${project.title}`}>
           {project.roles.map((role) => <li key={role}>{role}</li>)}
         </ul>
@@ -249,17 +236,19 @@ export default function Home() {
               <span>[ PORTFOLIO_2026 ]</span>
             </div>
             <h1 id="hero-title">
-              I LEARN BY TURNING <mark>COMPLEX IDEAS</mark> INTO PRODUCTS PEOPLE CAN USE<span className={styles.blink}>_</span>
+              PRODUCT-MINDED <mark>DESIGNER</mark> &amp; FRONT-END DEVELOPER<span className={styles.blink}>_</span>
             </h1>
             <p>
-              I&apos;m <strong>Intan</strong>, a Jakarta-based Informatics graduate who moves between user research, interface design, and front-end development. I&apos;m ready to spend the next nine months learning deeply, exchanging perspectives, and growing from someone who makes functional products into someone who asks sharper questions about why they should exist.
+              I&apos;m <strong>Intan</strong>,
+              I turn user needs and complex ideas into clear, useful digital experiences. My work moves from understanding the problem to shaping the flow, building the interface, and refining the details that make a product easier to use.
             </p>
             <div className={styles.heroActions}>
               <a className={styles.pixelButton} href="#work">EXPLORE WORK <PixelArrow /></a>
-              <a className={`${styles.pixelButton} ${styles.lightButton}`} href="#journey">MY JOURNEY</a>
+              <a className={`${styles.pixelButton} ${styles.lightButton}`} href={profileLinks.resumeUrl} download="Intan-Febyola-CV.pdf">DOWNLOAD CV <PixelArrow diagonal /></a>
+              <a className={`${styles.pixelButton} ${styles.lightButton}`} href={profileLinks.linkedInUrl} target="_blank" rel="noreferrer">LINKEDIN <PixelArrow diagonal /></a>
             </div>
             <div className={styles.heroFootnote}>
-              <span>BASED IN [Jakarta, INDONESIA]</span>
+              <span>AVAILABLE FOR NEW OPPORTUNITIES</span>
               <span>SCROLL TO EXPLORE ↓</span>
             </div>
           </div>
@@ -269,6 +258,14 @@ export default function Home() {
               <span className={styles.pixelBracket} aria-hidden="true">[</span>
               <p><strong>MY MINDSET</strong><br />STAY CURIOUS,<br />MAKE IT CLEAR,<br />KEEP ITERATING.</p>
               <span className={styles.pixelBracket} aria-hidden="true">]</span>
+            </div>
+            <div className={styles.recruiterSnapshot}>
+              <WindowBar title="RECRUITER_SNAPSHOT.TXT" />
+              <div>
+                <span>STATUS</span><strong>FRESH GRADUATE · OPEN TO WORK</strong>
+                <span>FOCUS</span><strong>UI/UX · FRONT-END · PROJECT MANAGER</strong>
+                <span>LOCATION</span><strong>JAKARTA · INDONESIA</strong>
+              </div>
             </div>
             <div className={styles.portraitWindow}>
               <WindowBar title="HELLO_WORLD.PNG" />
@@ -282,11 +279,11 @@ export default function Home() {
         </section>
 
         <div className={styles.skillTicker} aria-label="Keahlian utama">
-          <span>✦ PRODUCT DESIGN</span>
-          <span>✦ USER EXPERIENCE</span>
-          <span>✦ FRONT-END DEV</span>
-          <span>✦ DESIGN SYSTEM</span>
-          <span>✦ CREATIVE CODING</span>
+          <span>✦ FIGMA</span>
+          <span>✦ REACT</span>
+          <span>✦ NEXT.JS</span>
+          <span>✦ TYPESCRIPT</span>
+          <span>✦ CODEIGNITER 4</span>
         </div>
 
         <section className={styles.journeySection} id="journey" aria-labelledby="journey-title">
@@ -322,7 +319,7 @@ export default function Home() {
             <span>[ 02_SELECTED_WORK ]</span>
             <div>
               <h2 id="work-title">PROJECTS I&apos;M PROUD OF_</h2>
-              <p>Each project below includes the context, my responsibility, the contribution I made, and the lesson I carried forward.</p>
+              <p>A selection of interfaces and systems I designed, built, and explored across academic and professional contexts.</p>
             </div>
           </div>
           <div className={styles.projectList}>
@@ -352,10 +349,10 @@ export default function Home() {
             <span className={styles.sectionCode}>[ 03_ABOUT_ME ]</span>
             <h2 id="about-title">A DESIGNER WHO BUILDS, A DEVELOPER WHO LISTENS_</h2>
             <p>
-              My path through Informatics taught me that good digital products need more than technical correctness. They need empathy, structure, communication, and the courage to revise an early idea. That is why I enjoy working from user flow to prototype and from interface to implementation.
+              I care about the decisions behind an interface: what people need, what they should notice first, and how the product should respond. I work through questions, flows, prototypes, and implementation rather than treating design and development as separate steps.
             </p>
             <p>
-              My work ranges from disaster guidance and workplace reservations to entertainment discovery and bot-network analysis. The subjects change, but my motivation stays the same: <strong>make complexity understandable, then make the experience useful.</strong>
+              Across different problems and formats, my goal stays consistent: <strong>make complexity understandable, then make the experience useful.</strong>
             </p>
             <div className={styles.stats}>
               <div><strong>[10+]</strong><span>CASE STUDIES</span></div>
@@ -365,9 +362,33 @@ export default function Home() {
           </div>
         </section>
 
+        <section className={styles.academicSection} id="academic" aria-labelledby="academic-title">
+          <div className={styles.sectionHeading}>
+            <span>[ 04_ACADEMIC_PROFILE ]</span>
+            <div>
+              <h2 id="academic-title">THE FOUNDATION BEHIND THE WORK_</h2>
+              <p>
+                My academic journey gave me the technical foundation and curiosity to connect software engineering with thoughtful product experiences.
+              </p>
+            </div>
+          </div>
+          <div className={styles.academicWindow}>
+            <WindowBar title="ACADEMIC_PROFILE.LOG" />
+            <div className={styles.academicGrid}>
+              {academicProfile.map((item) => (
+                <div className={styles.academicItem} key={item.label}>
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
+                  <small>{item.detail}</small>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className={styles.capabilitySection} aria-labelledby="capability-title">
           <div className={styles.sectionHeading}>
-            <span>[ 04_CAPABILITIES ]</span>
+            <span>[ 05_CAPABILITIES ]</span>
             <div><h2 id="capability-title">WHAT I CAN DO_</h2></div>
           </div>
           <div className={styles.capabilityGrid}>
@@ -384,7 +405,7 @@ export default function Home() {
 
         <section className={styles.experienceSection} id="experience" aria-labelledby="experience-title">
           <div className={styles.experienceHeader}>
-            <span>[ 05_EXPERIENCE.LOG ]</span>
+            <span>[ 06_EXPERIENCE.LOG ]</span>
             <h2 id="experience-title">MY JOURNEY SO FAR_</h2>
           </div>
           <div className={styles.logWindow}>
@@ -418,7 +439,7 @@ export default function Home() {
 
         <section className={styles.contactSection} id="contact" aria-labelledby="contact-title">
           <div className={styles.contactPixel} aria-hidden="true">✦</div>
-          <span>[ 06_CONNECT ]</span>
+          <span>[ 07_CONNECT ]</span>
           <h2 id="contact-title">LET&apos;S LEARN, QUESTION,<br />AND BUILD TOGETHER_</h2>
           <p>I am open to learning opportunities and roles in UI/UX design or front-end development. I would love to bring my curiosity, cross-disciplinary perspective, and care for craft to a team that values growth.</p>
           {profileLinks.email ? (

@@ -29,7 +29,7 @@
 }
 
 .backLink,
-.detailFooter a {
+.detailFooter > a {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
@@ -37,6 +37,38 @@
   font-weight: 850;
   text-decoration-thickness: 2px;
   text-underline-offset: 5px;
+}
+
+.externalLink {
+  padding: 7px 10px;
+  gap: 10px;
+  border: 2px solid var(--navy);
+  background: var(--yellow);
+  box-shadow: 4px 4px 0 var(--navy);
+  text-decoration: none;
+  transition:
+    box-shadow 100ms steps(2, end),
+    transform 100ms steps(2, end);
+}
+
+.externalLink:hover,
+.externalLink:focus-visible {
+  box-shadow: 1px 1px 0 var(--navy);
+  transform: translate(3px, 3px);
+}
+
+.externalLink .externalBadge {
+  font-size: 0.48rem;
+}
+
+.detailFooter .externalBadge {
+  display: inline-flex;
+  min-height: 22px;
+  padding: 2px 5px;
+  align-items: center;
+  border: 1px solid currentColor;
+  font-size: 0.48rem;
+  line-height: 1;
 }
 
 .detailHero {

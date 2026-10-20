@@ -86,7 +86,16 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
 
       <footer className={styles.detailFooter}>
         <Link href="/#work">← ALL PROJECTS</Link>
-        <a href={project.url} target="_blank" rel="noreferrer">{project.linkLabel} ↗</a>
+        <a
+          className={styles.externalLink}
+          href={project.url}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`${project.linkLabel}, dibuka di tab baru`}
+        >
+          <span>{project.linkLabel}</span>
+          <span className={styles.externalBadge}>↗</span>
+        </a>
       </footer>
     </main>
   );

@@ -1,22 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import styles from "./page.module.css";
-
-const stages = ["hero", "journey", "work", "about", "contact"] as const;
-type Stage = (typeof stages)[number];
+import { useEffect } from "react";
 
 export default function ScrollCompanion() {
-  const [stage, setStage] = useState<Stage>("hero");
-
   useEffect(() => {
     let frame = 0;
 
     const updateStage = () => {
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
-      const stageIndex = Math.min(stages.length - 1, Math.floor(progress * stages.length));
-      setStage(stages[stageIndex]);
+      const setSceneProgress = (id: string, property: string, multiplier: number) => {
+        const section = document.getElementById(id);
+        if (!section) return;
+
+        const start = section.offsetTop - window.innerHeight * 0.8;
+        const end = section.offsetTop + section.offsetHeight - window.innerHeight * 0.25;
+        const sectionProgress = end > start
+          ? Math.min(1, Math.max(0, (window.scrollY - start) / (end - start)))
+          : 0;
+
+        document.documentElement.style.setProperty(property, sectionProgress.toFixed(3));
+        document.documentElement.style.setProperty(
+          `${property}-offset`,
+          `${((1 - sectionProgress) * multiplier).toFixed(2)}px`,
+        );
+        document.documentElement.style.setProperty(
+          `${property}-reverse-offset`,
+          `${((sectionProgress - 1) * multiplier).toFixed(2)}px`,
+        );
+      };
+
+      setSceneProgress("top", "--hero-progress", 14);
+      setSceneProgress("journey", "--journey-progress", 18);
+      setSceneProgress("work", "--work-progress", 18);
       frame = 0;
     };
 
@@ -32,25 +46,17 @@ export default function ScrollCompanion() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", updateStage);
       if (frame) window.cancelAnimationFrame(frame);
+      document.documentElement.style.removeProperty("--hero-progress");
+      document.documentElement.style.removeProperty("--hero-progress-offset");
+      document.documentElement.style.removeProperty("--hero-progress-reverse-offset");
+      document.documentElement.style.removeProperty("--journey-progress");
+      document.documentElement.style.removeProperty("--journey-progress-offset");
+      document.documentElement.style.removeProperty("--journey-progress-reverse-offset");
+      document.documentElement.style.removeProperty("--work-progress");
+      document.documentElement.style.removeProperty("--work-progress-offset");
+      document.documentElement.style.removeProperty("--work-progress-reverse-offset");
     };
   }, []);
 
-  return (
-    <div className={`${styles.scrollCompanion} ${styles[`companion-${stage}`]}`} aria-hidden="true">
-      <span className={styles.companionLabel}>
-        {stage === "hero" ? "HELLO" : stage === "journey" ? "LEARN" : stage === "work" ? "BUILD" : stage === "about" ? "GROW" : "CONNECT"}
-      </span>
-      <div className={styles.pixelCat}>
-        <i className={styles.catEarLeft} />
-        <i className={styles.catEarRight} />
-        <i className={styles.catFace}>
-          <b />
-          <b />
-          <em />
-        </i>
-        <i className={styles.catBody} />
-        <i className={styles.catTail} />
-      </div>
-    </div>
-  );
+  return null;
 }
