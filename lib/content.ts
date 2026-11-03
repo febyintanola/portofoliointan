@@ -16,7 +16,7 @@ export const profile = {
   location: "Jakarta, Indonesia",
   email: "intanfebyola@gmail.com",
   portrait: "/intanfoto.jpeg",
-  resumeUrl: "/creativ%20cv%20intan%20febyola.pdf",
+  resumeUrl: "/Intan_Febyola_Software_Engineer_CV.pdf",
   summary: "I turn real-world requirements into reliable software—building end-to-end applications, connecting APIs and services, and delivering integrated solutions that are built to work.",
   links: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/intan-febyola-sidabutar" },
