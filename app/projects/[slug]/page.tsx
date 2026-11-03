@@ -1,102 +1,60 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getProject, projects } from "@/lib/projects";
+import ProjectVisual from "@/app/components/ProjectVisual";
+import { getNextProject, getProject, projects } from "@/lib/projects";
 import ImageGallery from "./ImageGallery";
+import ProjectTOC from "./ProjectTOC";
 import styles from "./page.module.css";
 
-export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
+export function generateStaticParams() { return projects.map((project) => ({ slug: project.slug })); }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const project = getProject((await params).slug);
+  return project ? { title: project.title, description: project.summary } : {};
 }
 
 export default async function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const project = getProject(slug);
-
+  const project = getProject((await params).slug);
   if (!project) notFound();
+  const nextProject = getNextProject(project.slug);
 
   return (
-    <main className={styles.detailShell}>
-      <div className={styles.detailTopbar}>
-        <Link href="/#work" className={styles.backLink}>← BACK TO WORK</Link>
-        <span>[ CASE_STUDY_{project.number} ]</span>
-      </div>
-
-      <header className={styles.detailHero}>
-        <div>
-          <span className={styles.detailKicker}>{project.category}</span>
+    <main id="main-content" className={styles.page}>
+      <div className={styles.topline}><Link href="/projects">← Back to projects</Link><span>[ CASE_STUDY_{project.number.replace("/", "_")} ]</span></div>
+      <header className={styles.hero} data-reveal>
+        <div className={styles.heroCopy}>
+          <span>{project.category}</span>
           <h1>{project.title}_</h1>
-          <p>{project.overview}</p>
-          <div className={styles.detailTags}>
-            <span>{project.context}</span>
-            <span>{project.collaboration}</span>
-            <span>{project.year}</span>
-          </div>
+          <p>{project.summary}</p>
+          <div className={styles.tags}>{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+          {project.externalUrl && <a className="pixelButton pixelButtonYellow" href={project.externalUrl} target="_blank" rel="noreferrer">{project.externalLabel} ↗</a>}
         </div>
-        <div className={styles.detailHeroImage}>
-          <img src={project.image} alt={project.imageAlt} />
-        </div>
+        <ProjectVisual project={project} eager />
       </header>
 
-      <section className={styles.detailBody} aria-labelledby="story-title">
-        <div className={styles.detailIntro}>
-          <span>[ PROJECT_STORY ]</span>
-          <h2 id="story-title">FROM QUESTION TO EXPERIENCE_</h2>
-        </div>
-        <div className={styles.detailColumns}>
-          <div>
-            <h3>MY ROLE</h3>
-            <p>{project.myRole}</p>
-          </div>
-          <div>
-            <h3>IMPACT</h3>
-            <p>{project.impact}</p>
-          </div>
-          <div>
-            <h3>WHAT I LEARNED</h3>
-            <p>{project.learning}</p>
-          </div>
-        </div>
+      <section className={styles.factGrid} aria-label="Project facts" data-reveal>
+        <div><span>Duration</span><strong>{project.duration}</strong></div><div><span>Role</span><strong>{project.role}</strong></div>
+        <div><span>Team</span><strong>{project.team}</strong></div><div><span>Status</span><strong>{project.status}</strong></div>
       </section>
 
-      <section className={styles.processSection} aria-labelledby="process-title">
-        <div>
-          <span>[ PROCESS.LOG ]</span>
-          <h2 id="process-title">HOW I WORKED_</h2>
+      <div className={styles.caseLayout}>
+        <aside><ProjectTOC hasGallery={project.gallery.length > 0} /><div className={styles.stackCard}><div className="windowBar"><span>TECH_USED</span><span aria-hidden="true">+</span></div><div>{project.technologies.map((item) => <span key={item}>{item}</span>)}</div></div></aside>
+        <div className={styles.story}>
+          <section id="overview" data-reveal><span>[ OVERVIEW ]</span><h2>What this project is_</h2><p>{project.overview}</p></section>
+          <section id="problem" data-reveal><span>[ PROBLEM ]</span><h2>The challenge_</h2><p>{project.problem}</p></section>
+          <section id="contributions" data-reveal><span>[ CONTRIBUTIONS ]</span><h2>What I owned_</h2><ul>{project.contributions.map((item) => <li key={item}>{item}</li>)}</ul></section>
+          <section id="process" data-reveal><span>[ PROCESS.LOG ]</span><h2>How the work moved_</h2><ol className={styles.process}>{project.process.map((item, index) => <li key={item}><span>0{index + 1}</span><p>{item}</p></li>)}</ol></section>
+          <section id="outcome" data-reveal><span>[ OUTCOME ]</span><h2>Result & impact_</h2><p>{project.outcome}</p>{project.metrics.length > 0 && <div className={styles.metrics}>{project.metrics.map((metric) => <strong key={metric}>{metric}</strong>)}</div>}</section>
+          <section id="learning" data-reveal><span>[ LEARNING ]</span><h2>What changed my thinking_</h2><p>{project.learning}</p></section>
         </div>
-        <ol>
-          {project.process.map((step, index) => (
-            <li key={step}>
-              <span>0{index + 1}</span>
-              <p>{step}</p>
-            </li>
-          ))}
-        </ol>
+      </div>
+
+      <section className={styles.gallerySection} id="gallery">
+        <div className={styles.galleryHeading} data-reveal><span>[ VISUAL_DOCUMENTATION ]</span><h2>{project.gallery.length > 0 ? `All ${project.gallery.length} project images_` : "Visuals to be added_"}</h2><p>{project.gallery.length > 0 ? "Every registered screen is shown below. Open any image for a full view and keyboard navigation." : "This case study is ready for the final screenshots. Add them to the centralized project gallery when available."}</p></div>
+        {project.gallery.length > 0 ? <ImageGallery images={project.gallery} /> : <div className={styles.emptyGallery}><span>[ IMAGE_SET_PENDING ]</span><strong>Replace this panel with the complete project image set.</strong></div>}
       </section>
 
-      {project.gallery.length > 0 && (
-        <section className={styles.gallerySection} aria-labelledby="gallery-title">
-          <div className={styles.detailIntro}>
-            <span>[ VISUAL_DOCUMENTATION ]</span>
-            <h2 id="gallery-title">INSPECT THE INTERFACE_</h2>
-            <p>Click an image to open a closer view.</p>
-          </div>
-          <ImageGallery images={project.gallery} />
-        </section>
-      )}
-
-      <footer className={styles.detailFooter}>
-        <Link href="/#work">← ALL PROJECTS</Link>
-        <a
-          className={styles.externalLink}
-          href={project.url}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={`${project.linkLabel}, dibuka di tab baru`}
-        >
-          <span>{project.linkLabel}</span>
-          <span className={styles.externalBadge}>↗</span>
-        </a>
-      </footer>
+      <nav className={styles.nextProject} aria-label="Project navigation"><span>Next case study</span><Link href={`/projects/${nextProject.slug}`}>{nextProject.title} →</Link></nav>
     </main>
   );
 }

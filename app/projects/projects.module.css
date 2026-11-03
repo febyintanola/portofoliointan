@@ -1,0 +1,36 @@
+.page { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; padding: 72px 0 110px; }
+.hero { max-width: 920px; margin-bottom: 44px; }
+.hero > span { font: 800 .67rem/1 var(--font-geist-mono), monospace; color: var(--deep-blue); }
+.hero h1 { margin: 22px 0; font: 900 clamp(2.8rem, 7vw, 6.2rem)/.9 var(--font-geist-mono), monospace; text-transform: uppercase; letter-spacing: -.07em; }
+.hero p { max-width: 720px; font-size: 1.02rem; line-height: 1.7; color: #3e4b64; }
+.filters { display: flex; flex-wrap: wrap; gap: 10px; padding: 18px; border: 2px solid var(--navy); background: var(--white); box-shadow: var(--shadow); }
+.filters button { display: flex; align-items: center; gap: 12px; padding: 10px 13px; border: 2px solid var(--navy); background: var(--panel); font: 800 .62rem/1 var(--font-geist-mono), monospace; text-transform: uppercase; cursor: pointer; }
+.filters button span { min-width: 22px; padding: 4px; background: var(--white); border: 1px solid var(--navy); }
+.filters button.active { background: var(--deep-blue); color: white; box-shadow: 3px 3px 0 var(--navy); }
+.filters button.active span { color: var(--navy); }
+.resultCount { margin: 24px 0; font: 700 .62rem/1 var(--font-geist-mono), monospace; text-transform: uppercase; }
+.grid { display: grid; gap: 34px; }
+.card { display: grid; grid-template-columns: 1.02fr .98fr; gap: 32px; padding: 26px; border: 2px solid var(--navy); box-shadow: 7px 7px 0 var(--navy); background: var(--white); animation: projectCardEnter .42s steps(6, end) both; }
+.card:nth-child(even) > :first-child { order: 2; }
+.cardCopy { align-self: center; padding: 12px; }
+.meta { display: flex; justify-content: space-between; font: 800 .6rem/1 var(--font-geist-mono), monospace; }
+.tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+.tags span { padding: 5px 7px; border: 1px solid var(--navy); background: var(--mint); font: 800 .52rem/1 var(--font-geist-mono), monospace; text-transform: uppercase; }
+.card h2 { margin: 18px 0 10px; font: 900 clamp(2rem, 5vw, 3.4rem)/.9 var(--font-geist-mono), monospace; text-transform: uppercase; }
+.card p { line-height: 1.6; color: #3e4b64; }
+.card dl { display: grid; gap: 10px; margin: 22px 0; }
+.card dl div { display: grid; grid-template-columns: 65px 1fr; gap: 10px; }
+.card dt, .card dd { margin: 0; font: 700 .62rem/1.4 var(--font-geist-mono), monospace; }
+.card dt { color: var(--deep-blue); text-transform: uppercase; }
+@keyframes projectCardEnter {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 760px) {
+  .page { width: min(100% - 32px, var(--max)); padding-top: 54px; }
+  .hero h1 { font-size: clamp(2.4rem, 12vw, 4rem); }
+  .filters { display: grid; }
+  .filters button { justify-content: space-between; }
+  .card { grid-template-columns: 1fr; padding: 14px; }
+  .card:nth-child(even) > :first-child { order: 0; }
+}

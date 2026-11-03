@@ -1,194 +1,207 @@
-export type ProjectVisual = "mobile" | "reservation" | "entertainment" | "network";
-
+export type ProjectTag = "Software Engineering" | "Data/ML" | "UI/UX";
+export type GalleryDevice = "phone" | "browser";
+export type GalleryImage = { src: string; alt: string; caption: string; device: GalleryDevice; phase: "Wireframe" | "Prototype" | "Final interface" | "System output" };
 export type Project = {
-  slug: string;
-  number: string;
-  title: string;
-  category: string;
-  description: string;
-  context: string;
-  collaboration: string;
-  myRole: string;
-  impact: string;
-  learning: string;
-  roles: string[];
-  year: string;
-  visual: ProjectVisual;
-  image: string;
-  imageAlt: string;
-  url: string;
-  linkLabel: string;
-  overview: string;
-  process: string[];
-  gallery: { src: string; alt: string; caption: string }[];
+  slug: string; number: string; featuredOrder: number; title: string; category: string; type: string; tags: ProjectTag[];
+  summary: string; result: string; context: string; role: string; duration: string; team: string; status: string; year: string;
+  image?: string; imageAlt: string; externalUrl?: string; externalLabel?: string; overview: string; problem: string;
+  contributions: string[]; process: string[]; outcome: string; metrics: string[]; learning: string; technologies: string[];
+  gallery: GalleryImage[]; placeholder?: boolean;
 };
+const quakeFiles = ["1.png", "2.png", "3.png", "4.png", "5.png", ...Array.from({ length: 25 }, (_, index) => `Picture${index + 1}.png`)];
+const quakeGallery: GalleryImage[] = quakeFiles.map((file, index) => ({
+  src: `/QUAKE/${file}`, alt: `QUAKE interface screen ${String(index + 1).padStart(2, "0")}`,
+  caption: `QUAKE screen ${String(index + 1).padStart(2, "0")}`, device: "phone", phase: index < 5 ? "Wireframe" : "Prototype",
+}));
+const mediaMonitoringFiles = [
+  "monitoring-1.png",
+  "monitoring-2.jpeg",
+  "monitoring-3.png",
+  "monitoring-4.png",
+];
+
+const mediaMonitoringGallery: GalleryImage[] =
+  mediaMonitoringFiles.map((file, index) => ({
+    src: `/MediaMonitoring/${file}`,
+    alt: `Media Monitoring screen ${String(index + 1).padStart(2, "0")}`,
+    caption: `Media Monitoring screen ${String(index + 1).padStart(2, "0")}`,
+    device: "browser",
+    phase: "Final interface",
+  }));
+
+const rumaFiles = ["ruma1.png", "ruma2.png", "ruma3.png"];
+const rumaGallery: GalleryImage[] = rumaFiles.map((file, index) => ({
+  src: `/ruma/${file}`, alt: `RUMA interface screen ${String(index + 1).padStart(2, "0")}`,
+  caption: `RUMA screen ${String(index + 1).padStart(2, "0")}`, device: "browser", phase: "Final interface",
+}));
+const buzzFiles = [
+  "WhatsApp%20Image%202026-10-19%20at%2015.15.04.jpeg", "WhatsApp%20Image%202026-10-19%20at%2015.15.03%20(1).jpeg",
+  "WhatsApp%20Image%202026-10-19%20at%2015.15.03.jpeg", "WhatsApp%20Image%202026-10-19%20at%2015.15.02%20(2).jpeg",
+  "WhatsApp%20Image%202026-10-19%20at%2015.15.02%20(1).jpeg", "WhatsApp%20Image%202026-10-19%20at%2015.15.02.jpeg",
+  "WhatsApp%20Image%202026-10-19%20at%2015.15.01%20(2).jpeg", "WhatsApp%20Image%202026-10-19%20at%2015.15.01%20(1).jpeg",
+  "WhatsApp%20Image%202026-10-19%20at%2015.15.01.jpeg", "WhatsApp%20Image%202026-10-19%20at%2015.15.00%20(1).jpeg",
+  "WhatsApp%20Image%202026-10-19%20at%2015.15.00.jpeg", "WhatsApp%20Image%202026-10-19%20at%2015.14.59.jpeg",
+];
+const buzzCaptions = ["Splash screen", "Login", "Sign up", "Home", "Title details", "Review", "Expanded details", "Search", "Profile", "Recommendations", "Community reviews", "Profile settings"];
+const buzzGallery: GalleryImage[] = buzzFiles.map((file, index) => ({
+  src: `/buzzbuzz/${file}`, alt: `Buzz Buzz ${buzzCaptions[index]} screen`, caption: buzzCaptions[index], device: "phone", phase: "Final interface",
+}));
+
+const botGallery: GalleryImage[] = [
+  ["frontend.png", "Frontend overview"], ["screencapture-127-0-0-1-8000-2026-06-23-10_23_54.png", "Full application flow"],
+  ["Screenshot%202026-06-23%20194343.png", "Suspected bot analysis"], ["11.png", "All suspected accounts"],
+  ["12.png", "Network graph view"], ["13.png", "Indicated account detail"],
+].map(([file, caption]) => ({ src: `/Bot%20Network%20detection/${file}`, alt: `Bot Network Detection ${caption}`, caption, device: "browser", phase: "System output" }));
 
 export const projects: Project[] = [
   {
-    slug: "quake",
-    number: "01/04",
-    title: "QUAKE",
-    category: "UI/UX DESIGN · MOBILE APP",
-    description: "A mobile disaster-evacuation guide that puts safety instructions and an SOS flow in one place. The prototype helps users find the right action quickly during a high-stress situation.",
-    context: "CLASS ASSIGNMENT",
-    collaboration: "GROUP PROJECT",
-    myRole: "UI/UX Designer — I shaped the information architecture, user flows, interface, and interactive prototype.",
-    impact: "I translated complex emergency guidance into a focused end-to-end flow, making the most critical actions easier to find and understand.",
-    learning: "I learned to prioritize clarity, accessibility, and low cognitive load when designing for urgent situations.",
-    roles: ["UI/UX DESIGN", "MOBILE DESIGN", "FIGMA PROTOTYPE"],
-    year: "2024",
-    visual: "mobile",
-    image: "/Quack.png",
-    imageAlt: "Tampilan aplikasi QUAKE",
-    url: "https://www.figma.com/proto/nPQd29r4aoJyYXPWb5rqkY/Quack",
-    linkLabel: "VIEW FIGMA PROTOTYPE",
-    overview: "QUAKE explores how a calm, focused mobile experience can guide people through an emergency without overwhelming people with information.",
-    process: ["Map the moments when a person needs help most", "Prioritize emergency actions and reduce unnecessary decisions", "Shape the interface around clear hierarchy, readable instructions, and a direct SOS flow"],
-    gallery: [
-      { src: "/QUAKE/1.png", alt: "QUAKE wireframe 01", caption: "WIREFRAME 01 · QUAKE" },
-      { src: "/QUAKE/2.png", alt: "QUAKE wireframe 02", caption: "WIREFRAME 02 · QUAKE" },
-      { src: "/QUAKE/3.png", alt: "QUAKE wireframe 03", caption: "WIREFRAME 03 · QUAKE" },
-      { src: "/QUAKE/4.png", alt: "QUAKE wireframe 04", caption: "WIREFRAME 04 · QUAKE" },
-      { src: "/QUAKE/5.png", alt: "QUAKE wireframe 05", caption: "WIREFRAME 05 · QUAKE" },
-      { src: "/QUAKE/Picture1.png", alt: "QUAKE Figma prototype 01", caption: "FIGMA PROTOTYPE 01 · QUAKE" },
-      { src: "/QUAKE/Picture2.png", alt: "QUAKE Figma prototype 02", caption: "FIGMA PROTOTYPE 02 · QUAKE" },
-      { src: "/QUAKE/Picture3.png", alt: "QUAKE Figma prototype 03", caption: "FIGMA PROTOTYPE 03 · QUAKE" },
-      { src: "/QUAKE/Picture4.png", alt: "QUAKE Figma prototype 04", caption: "FIGMA PROTOTYPE 04 · QUAKE" },
-      { src: "/QUAKE/Picture5.png", alt: "QUAKE Figma prototype 05", caption: "FIGMA PROTOTYPE 05 · QUAKE" },
-      { src: "/QUAKE/Picture6.png", alt: "QUAKE Figma prototype 06", caption: "FIGMA PROTOTYPE 06 · QUAKE" },
-      { src: "/QUAKE/Picture7.png", alt: "QUAKE Figma prototype 07", caption: "FIGMA PROTOTYPE 07 · QUAKE" },
-      { src: "/QUAKE/Picture8.png", alt: "QUAKE Figma prototype 08", caption: "FIGMA PROTOTYPE 08 · QUAKE" },
-      { src: "/QUAKE/Picture9.png", alt: "QUAKE Figma prototype 09", caption: "FIGMA PROTOTYPE 09 · QUAKE" },
-      { src: "/QUAKE/Picture10.png", alt: "QUAKE Figma prototype 10", caption: "FIGMA PROTOTYPE 10 · QUAKE" },
-      { src: "/QUAKE/Picture11.png", alt: "QUAKE Figma prototype 11", caption: "FIGMA PROTOTYPE 11 · QUAKE" },
-      { src: "/QUAKE/Picture12.png", alt: "QUAKE Figma prototype 12", caption: "FIGMA PROTOTYPE 12 · QUAKE" },
-      { src: "/QUAKE/Picture13.png", alt: "QUAKE Figma prototype 13", caption: "FIGMA PROTOTYPE 13 · QUAKE" },
-      { src: "/QUAKE/Picture14.png", alt: "QUAKE Figma prototype 14", caption: "FIGMA PROTOTYPE 14 · QUAKE" },
-      { src: "/QUAKE/Picture15.png", alt: "QUAKE Figma prototype 15", caption: "FIGMA PROTOTYPE 15 · QUAKE" },
-      { src: "/QUAKE/Picture16.png", alt: "QUAKE Figma prototype 16", caption: "FIGMA PROTOTYPE 16 · QUAKE" },
-      { src: "/QUAKE/Picture17.png", alt: "QUAKE Figma prototype 17", caption: "FIGMA PROTOTYPE 17 · QUAKE" },
-      { src: "/QUAKE/Picture18.png", alt: "QUAKE Figma prototype 18", caption: "FIGMA PROTOTYPE 18 · QUAKE" },
-      { src: "/QUAKE/Picture19.png", alt: "QUAKE Figma prototype 19", caption: "FIGMA PROTOTYPE 19 · QUAKE" },
-      { src: "/QUAKE/Picture20.png", alt: "QUAKE Figma prototype 20", caption: "FIGMA PROTOTYPE 20 · QUAKE" },
-      { src: "/QUAKE/Picture21.png", alt: "QUAKE Figma prototype 21", caption: "FIGMA PROTOTYPE 21 · QUAKE" },
-      { src: "/QUAKE/Picture22.png", alt: "QUAKE Figma prototype 22", caption: "FIGMA PROTOTYPE 22 · QUAKE" },
-      { src: "/QUAKE/Picture23.png", alt: "QUAKE Figma prototype 23", caption: "FIGMA PROTOTYPE 23 · QUAKE" },
-      { src: "/QUAKE/Picture24.png", alt: "QUAKE Figma prototype 24", caption: "FIGMA PROTOTYPE 24 · QUAKE" },
-      { src: "/QUAKE/Picture25.png", alt: "QUAKE Figma prototype 25", caption: "FIGMA PROTOTYPE 25 · QUAKE" },
+  slug: "media-monitoring",
+  number: "01/05",
+  featuredOrder: 1,
+
+  title: "Media Monitoring",
+  category: "Software Engineering - Web App & API",
+  type: "Web application and API",
+
+  tags: ["Software Engineering"],
+
+  summary:
+    "A web-based media monitoring platform for collecting and analyzing mentions from X, YouTube, and Google News.",
+
+  result:
+    "Centralized cross-platform mentions, language detection, sentiment analysis, filtering, and PDF reporting in one dashboard.",
+
+  context:
+    "A group software engineering project developed to help users monitor public conversations around brands, organizations, products, or topics.",
+
+  role: "Full-Stack Developer",
+
+  duration: "3 months",
+  team: "3 members",
+  status: "Completed",
+  year: "2025",
+
+  image: "/MediaMonitoring/monitoring-1.png",
+  imageAlt: "MediaScope media monitoring dashboard",
+
+  overview:
+    "MediaScope helps users monitor conversations about a brand, organization, product, or topic through project keywords. It collects mentions from X, YouTube, and Google News, then groups the data by source and language and classifies sentiment as positive, neutral, or negative.",
+
+  problem:
+    "Relevant conversations were scattered across multiple platforms, requiring users to check each source manually. This made it difficult to measure discussion volume, identify public sentiment, compare sources and languages, monitor data regularly, and produce structured reports.",
+
+  contributions: [
+    "Designed the monitoring dashboard and relational database for users, projects, keywords, mentions, sentiment, and reports",
+    "Built the Express.js REST API and integrated Twitter API, YouTube Data API, and Serper.dev",
+    "Implemented Redis caching and background workers for scheduled mention collection",
+    "Developed language detection, sentiment classification, search, and multi-criteria filtering",
+    "Added JWT authentication, password hashing, activity logs, automatic backup, project cleanup, and PDF export"
+  ],
+
+  process: [
+    "Mapped the monitoring workflow, data requirements, database relationships, and REST API routes",
+    "Stored project keywords in MySQL and Redis for scheduled processing",
+    "Used background workers to collect, deduplicate, classify, and store mentions from external APIs",
+    "Connected the dashboard to the API and tested authentication, filters, reporting, backups, and error states"
+  ],
+
+  outcome:
+    "Delivered a working media monitoring platform that manages keyword-based projects, collects cross-platform mentions, classifies language and sentiment, supports detailed search and filtering, records system activity, automates backups and inactive-project cleanup, and exports monitoring results to PDF.",
+
+  metrics: [],
+
+  learning:
+    "This project strengthened my understanding of REST API architecture, third-party API integration, relational data, Redis, background workers, authentication, duplicate handling, sentiment analysis, logging, and fault-aware system design. It also showed me how API limits and inconsistent source data affect production reliability.",
+
+  technologies: [
+    "Node.js",
+    "Express.js",
+    "MySQL",
+    "Redis",
+    "JavaScript",
+    "Bootstrap 5",
+    "JWT",
+    "Sentiment.js",
+    "Franc",
+    "Twitter API",
+    "YouTube Data API",
+    "Serper.dev",
+    "PM2",
+    "html2pdf.js"
+  ],
+  externalUrl: "https://github.com/nisaulUna/mediaMonitoring-kel8.git", externalLabel: "View source code",
+
+  gallery: mediaMonitoringGallery,
+},
+  {
+    slug: "ruma", number: "02/05", featuredOrder: 2, title: "RUMA", category: "Software Engineering - Internal Web App", type: "Responsive web application",
+    tags: ["Software Engineering", "UI/UX"], summary: "A centralized web application for booking meeting rooms and company vehicles at PLN.",
+    result: "Unified reservations, approvals, driver assignments, facility monitoring, and reporting in one role-based system.", context: "Internship assignment",
+    role: "Full-Stack Developer & UI/UX Designer", duration: "Jul 2025 - Nov 2025", team: "Individual project with workplace stakeholders", status: "Completed", year: "2025",
+    image: "/ruma.png", imageAlt: "RUMA reservation dashboard", 
+    overview: "RUMA is a responsive internal web application that centralizes meeting-room and company-vehicle reservations. It provides dedicated workflows and permissions for users, administrators, and drivers.",
+    problem: "The previous reservation process was fragmented, making availability difficult to check, increasing the risk of schedule conflicts, and slowing approvals. Administrators also needed a clearer way to assign vehicles and drivers, monitor usage, and generate reports.",
+    contributions: [
+      "Designed the database, reservation flows, and role-based access for users, administrators, and drivers",
+      "Built room and vehicle booking with availability checks and schedule-conflict prevention",
+      "Implemented approval, rejection, vehicle assignment, driver assignment, and status-tracking workflows",
+      "Developed responsive dashboards, reservation history, and facility-management features",
+      "Added company-account authentication, email notifications, and PDF and Excel reporting"
     ],
+    process: [
+      "Mapped user needs, business rules, access levels, and reservation states",
+      "Designed the relational database and responsive interface",
+      "Implemented the workflows using CodeIgniter 4 and integrated company authentication",
+      "Tested validation, schedule conflicts, approvals, driver status updates, and responsive layouts"
+    ],
+    outcome: "Delivered an integrated reservation system that centralizes facility requests, reduces schedule conflicts, speeds up approvals, supports vehicle and driver assignments, and provides transparent status tracking and downloadable reports.", metrics: [],
+    learning: "This project strengthened my understanding of MVC development, relational database design, role-based access control, LDAP integration, conflict prevention, dynamic interfaces, reporting, CSRF security, and end-to-end application testing.",
+    technologies: ["PHP 8.1", "CodeIgniter 4", "MySQL/MariaDB", "Tailwind CSS", "JavaScript & AJAX", "Alpine.js", "LDAP/Active Directory", "Dompdf", "PhpSpreadsheet", "SMTP/Email"], gallery: rumaGallery,
   },
   {
-    slug: "ruma",
-    number: "02/04",
-    title: "RUMA",
-    category: "UI/UX DESIGN · WEB DEVELOPMENT",
-    description: "An internal web application for booking meeting rooms and company vehicles. It brings both reservation processes into one consistent, trackable workflow.",
-    context: "WORK ASSIGNMENT · INTERNSHIP",
-    collaboration: "INDIVIDUAL PROJECT",
-    myRole: "Product Designer & Full-Stack Developer — I designed the system and implemented the booking experience in CodeIgniter 4.",
-    impact: "I consolidated two facility-booking needs into one interface and built reusable patterns that keep forms, schedules, and booking states consistent.",
-    learning: "I learned how to turn stakeholder requirements into a working internal tool and carry design decisions through to implementation.",
-    roles: ["DESIGN SYSTEM", "CODEIGNITER 4", "FULL-STACK DEVELOPMENT"],
-    year: "2025",
-    visual: "reservation",
-    image: "/ruma.png",
-    imageAlt: "Tampilan web RUMA",
-    url: "https://github.com/febyintanola/reservasi",
-    linkLabel: "VIEW SOURCE CODE",
-    overview: "RUMA brings meeting-room and company-vehicle reservations into one internal workflow, making facility requests easier to submit and track.",
-    process: ["Understand the different rules behind room and vehicle reservations", "Create shared patterns for forms, schedules, and booking states", "Implement the experience in CodeIgniter 4 and refine it around real workplace needs"],
-    gallery: [],
+    slug: "bot-network-detection", number: "03/05", featuredOrder: 3, title: "Bot Network Detection", category: "Software Engineering - Data/ML",
+    type: "Analytical web application", tags: ["Software Engineering", "Data/ML", "UI/UX"], summary: "A visual investigation tool for suspected bot relationships on TikTok.",
+    result: "Translated machine-learning output into an explorable interface instead of isolated model results.", context: "Final project",
+    role: "UI/UX Designer & Full-Stack Developer", duration: "6 Month", team: "Individual project", status: "Completed", year: "2026",
+    image: "/botnet.png", imageAlt: "Bot Network Detection analytics interface", externalUrl: "https://github.com/febyintanola/DeteksiJaringanBot", externalLabel: "View source code",
+    overview: "Bot Network Detection combines model output and network visualization to help users investigate suspected bot accounts and their relationships.",
+    problem: "Technical detection output is difficult to interpret when account relationships, confidence, and evidence are presented as disconnected data.",
+    contributions: ["Designed the analytical investigation workflow", "Integrated FastAPI, model output, and network visualizations", "Created views for comparison and account-level inspection"],
+    process: ["Define the information a non-technical user needs", "Design network views for exploration", "Connect detection output to the interface", "Test data-heavy states and refine hierarchy"],
+    outcome: "Produced an interface that makes model results and account relationships easier to explore and explain.", metrics: [],
+    learning: "I learned to design for explainability and connect a machine-learning backend to a usable, data-heavy product experience.",
+    technologies: ["FastAPI", "Python", "Data Visualization", "Machine Learning"], gallery: botGallery,
   },
   {
-    slug: "buzz-buzz",
-    number: "03/04",
-    title: "BUZZ BUZZ",
-    category: "UX REDESIGN · DASHBOARD",
-    description: "A mobile entertainment app for reviewing and rating films and TV series. Its discovery experience recommends titles around each user’s preferences.",
-    context: "CLASS ASSIGNMENT",
-    collaboration: "GROUP PROJECT",
-    myRole: "UI/UX Designer & Front-End Developer — I contributed research, designed the main flows, and translated the interface into code.",
-    impact: "I connected research insights to a clearer discovery, rating, and review journey while creating consistent patterns for entertainment content.",
+    slug: "buzz-buzz", number: "04/05", featuredOrder: 4, title: "Buzz Buzz", category: "Software Engineering - Mobile App", type: "Mobile entertainment application",
+    tags: ["Software Engineering", "UI/UX"], summary: "A film discovery, rating, and community discussion experience.",
+    result: "Connected recommendations, ratings, and reviews into a consistent entertainment journey.", context: "Class assignment",
+    role: "UI/UX Designer & Mobile Application Developer", duration: "3 Month", team: "Group project (5 Members)", status: "Mobile App", year: "2025",
+    image: "/BuzzBuzz.png", imageAlt: "Buzz Buzz mobile application screens", 
+    overview: "Buzz Buzz helps people discover, rate, and discuss films and series around their preferences.",
+    problem: "Entertainment discovery can become fragmented when recommendations, watch decisions, ratings, and community reviews live in disconnected flows.",
+    contributions: ["Contributed research and shaped the main user flows", "Designed consistent discovery, rating, and review patterns", "Translated the interface into front-end views"],
+    process: ["Explore how people decide what to watch", "Map the discovery-to-review journey", "Prototype the main flows", "Build and align the front-end patterns"],
+    outcome: "Created a cohesive mobile experience connecting personalized discovery with community participation.", metrics: [],
     learning: "I learned to align design decisions within a team and maintain consistency between research, interface design, and front-end delivery.",
-    roles: ["UI/UX DESIGN", "FRONT-END", "RESEARCH"],
-    year: "2025",
-    visual: "entertainment",
-    image: "/BuzzBuzz.png",
-    imageAlt: "Tampilan aplikasi Buzz Buzz",
-    url: "https://github.com/febyintanola/Buzz-Buzz.git",
-    linkLabel: "VIEW SOURCE CODE",
-    overview: "Buzz Buzz is an entertainment discovery experience designed to help people find, rate, and discuss films and series that fit their preferences.",
-    process: ["Explore how people discover and decide what to watch", "Connect recommendations, ratings, and reviews into one journey", "Translate the redesigned flows into consistent front-end patterns"],
-    gallery: [
-      { src: "/buzzbuzz/WhatsApp%20Image%202026-10-19%20at%2015.15.04.jpeg", alt: "Dokumentasi layar Buzz Buzz 01", caption: "Buzz Buzz Splash Screen" },
-      { src: "/buzzbuzz/WhatsApp%20Image%202026-10-19%20at%2015.15.03%20(1).jpeg", alt: "Dokumentasi layar Buzz Buzz 02", caption: "Buzz Buzz Login Page" },
-      { src: "/buzzbuzz/WhatsApp%20Image%202026-10-19%20at%2015.15.03.jpeg", alt: "Dokumentasi layar Buzz Buzz 03", caption: "Buzz Buzz Sign Up Page" },
-      { src: "/buzzbuzz/WhatsApp%20Image%202026-10-19%20at%2015.15.02%20(2).jpeg", alt: "Dokumentasi layar Buzz Buzz 04", caption: "Buzz Buzz Home Page." },
-      { src: "/buzzbuzz/WhatsApp%20Image%202026-10-19%20at%2015.15.02%20(1).jpeg", alt: "Dokumentasi layar Buzz Buzz 05", caption: "Buzz Buzz Details Page." },
-      { src: "/buzzbuzz/WhatsApp%20Image%202026-10-19%20at%2015.15.02.jpeg", alt: "Dokumentasi layar Buzz Buzz 06", caption: "Buzz Buzz Review Page." },
-      { src: "/buzzbuzz/WhatsApp%20Image%202026-10-19%20at%2015.15.01%20(2).jpeg", alt: "Dokumentasi layar Buzz Buzz 07", caption: "Buzz Buzz Details Page 2." },
-      { src: "/buzzbuzz/WhatsApp%20Image%202026-10-19%20at%2015.15.01%20(1).jpeg", alt: "Dokumentasi layar Buzz Buzz 08", caption: "Buzz Buzz Search Page." },
-      { src: "/buzzbuzz/WhatsApp%20Image%202026-10-19%20at%2015.15.01.jpeg", alt: "Dokumentasi layar Buzz Buzz 09", caption: "Buzz Buzz Profile Page." },
-      { src: "/buzzbuzz/WhatsApp%20Image%202026-10-19%20at%2015.15.00%20(1).jpeg", alt: "Dokumentasi layar Buzz Buzz 10", caption: "Buzz Buzz Recomendation Page." },
-      { src: "/buzzbuzz/WhatsApp%20Image%202026-10-19%20at%2015.15.00.jpeg", alt: "Dokumentasi layar Buzz Buzz 11", caption: "Buzz Buzz People Review Page." },
-      { src: "/buzzbuzz/WhatsApp%20Image%202026-10-19%20at%2015.14.59.jpeg", alt: "Dokumentasi layar Buzz Buzz 12", caption: "Buzz Buzz Profile Settings Page." },
-    ],
+    technologies: ["XML", "Kotlin", "MySQL", "TMDb API"], gallery: buzzGallery,
   },
   {
-    slug: "bot-network-detection",
-    number: "04/04",
-    title: "Bot Network Detection",
-    category: "UI/UX DESIGN · WEB DEVELOPMENT",
-    description: "A web application that uses machine learning to detect suspected bot accounts on TikTok. Interactive network visualizations make relationships and detection results easier to investigate.",
-    context: "FINAL PROJECT",
-    collaboration: "INDIVIDUAL PROJECT",
-    myRole: "UI/UX Designer & Full-Stack Developer — I designed the analytical workflow and integrated the FastAPI service, model output, and visualizations.",
-    impact: "I turned technical detection output into an explorable interface, helping users interpret account relationships instead of reading isolated model results.",
-    learning: "I learned to design for explainability, handle data-heavy interface states, and connect a machine-learning backend to a usable product experience.",
-    roles: ["UI/UX DESIGN", "Full-Stack Development", "DATA VISUALIZATION", "FastAPI"],
-    year: "2026",
-    visual: "network",
-    image: "/botnet.png",
-    imageAlt: "Tampilan web Bot Network Detection",
-    url: "https://github.com/febyintanola/DeteksiJaringanBot",
-    linkLabel: "VIEW SOURCE CODE",
-    overview: "Bot Network Detection turns machine-learning output into a visual investigation tool for understanding suspected bot relationships on TikTok.",
-    process: ["Make technical detection results understandable to a non-technical user", "Design network views that support exploration and comparison", "Connect the FastAPI service, model output, and visual interface"],
-    gallery: [
-      {
-        src: "/Bot%20Network%20detection/frontend.png",
-        alt: "Tampilan frontend Bot Network Detection",
-        caption: "Bot Network Detection frontend.",
-      },
-      {
-        src: "/Bot%20Network%20detection/screencapture-127-0-0-1-8000-2026-06-23-10_23_54.png",
-        alt: "Tampilan aplikasi Bot Network Detection pada browser",
-        caption: "Bot Network Detection Results Example",
-      },
-      {
-        src: "/Bot%20Network%20detection/Screenshot%202026-06-23%20194343.png",
-        alt: "Screenshot analisis Bot Network Detection",
-        caption: "Bot Network Detection Suspected Bot Analysis.",
-      },
-      {
-        src: "/Bot%20Network%20detection/11.png",
-        alt: "Dokumentasi layar Bot Network Detection 11",
-        caption: "Bot Network Detection All Suspected Bot Analysis.",
-      },
-      {
-        src: "/Bot%20Network%20detection/12.png",
-        alt: "Dokumentasi layar Bot Network Detection 12",
-        caption: "Bot Network Detection Graph View.",
-      },
-      {
-        src: "/Bot%20Network%20detection/13.png",
-        alt: "Dokumentasi layar Bot Network Detection 13",
-        caption: "Bot Network Detection Indicated Account.",
-      },
-    ],
+    slug: "quake", number: "05/05", featuredOrder: 5, title: "QUAKE", category: "UI/UX - Mobile Safety App", type: "Mobile application prototype", tags: ["UI/UX"],
+    summary: "A calm emergency guide that prioritizes safety instructions and a direct SOS flow.",
+    result: "Translated complex emergency guidance into a focused end-to-end mobile experience.", context: "Class assignment", role: "UI/UX Designer",
+    duration: "16 Weeks", team: "Group project (5 Members)", status: "Completed prototype", year: "2024", image: "/Quack.png", imageAlt: "QUAKE emergency guide application screens",
+    externalUrl: "https://www.figma.com/proto/nPQd29r4aoJyYXPWb5rqkY/Quack", externalLabel: "View Figma prototype",
+    overview: "QUAKE explores how a calm, focused mobile experience can guide people through an emergency without overwhelming them with information.",
+    problem: "During high-stress situations, dense instructions and unclear priorities can make it harder to identify the right action quickly.",
+    contributions: ["Mapped the information architecture and emergency flows", "Prioritized critical actions and reduced unnecessary decisions", "Created the interface and interactive Figma prototype"],
+    process: ["Map the moments when help is needed most", "Prioritize emergency actions", "Create a clear information hierarchy", "Prototype and review the complete flow"],
+    outcome: "Created a focused prototype where critical guidance and SOS actions are easier to find and understand.", metrics: [],
+    learning: "I learned to prioritize clarity, accessibility, and low cognitive load when designing for urgent situations.",
+    technologies: ["Figma", "UI/UX Design", "Mobile Design", "Prototyping"], gallery: quakeGallery,
   },
 ];
 
-export function getProject(slug: string) {
-  return projects.find((project) => project.slug === slug);
-}
+export const projectTags: ("All" | ProjectTag)[] = ["All", "Software Engineering", "Data/ML", "UI/UX"];
+export function getProject(slug: string) { return projects.find((project) => project.slug === slug); }
+export function getNextProject(slug: string) { const index = projects.findIndex((project) => project.slug === slug); return projects[(index + 1) % projects.length]; }
